@@ -1,0 +1,23 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "rows": [
+    {
+      "operation_at": "2026-11-19T10:28:00+08:00",
+      "operation_label": "ac",
+      "certainty": "sure",
+      "note": "開冷氣 26 度"
+    },
+    {
+      "operation_at": "2026-11-19T13:00:00+08:00",
+      "operation_label": "none_confirmed",
+      "certainty": "sure",
+      "note": "13:00-15:00 確認無操作"
+    },
+    {
+      "operation_at": "2026-11-19T18:10:00+08:00",
+      "operation_label": "window",
+      "certainty": "unsure",
+      "note": "不確定幾點開窗 → 不採用"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "task": "binary",
+  "eval_version": "eval/1.0.0",
+  "fixed_rule_version": "fixed-rule/1.0.0",
+  "n_events": 52,
+  "n_labeled": 47,
+  "n_excluded_unknown_or_other": 5,
+  "split": {
+    "method": "time_by_event_start",
+    "test_frac": 0.3,
+    "cutoff_start_at": "2026-11-12T07:20:00+08:00",
+    "train_period": [
+      "2026-11-02T07:45:00+08:00",
+      "2026-11-11T19:22:00+08:00"
+    ],
+    "test_period": [
+      "2026-11-12T07:20:00+08:00",
+      "2026-11-15T10:53:00+08:00"
+    ],
+    "n_train": 33,
+    "n_test": 14,
+    "train_class_dist": {
+      "0": 7,
+      "1": 26
+    },
+    "test_class_dist": {
+      "0": 5,
+      "1": 9
+    }
+  },
+  "features": [
+    "delta_temperature_c",
+    "delta_relative_humidity_pct",
+    "slope_temperature_c_per_min",
+    "slope_relative_humidity_pct_per_min",
+    "start_temperature_c",
+    "start_relative_humidity_pct",
+    "delta_dew_point_c",
+    "minutes_to_decision",
+    "hour_of_day"
+  ],
+  "limitations": [
+    "僅一次時間切分，測試樣本少時差異可能來自隨機變動；不宣稱模型普遍優於規則。"
+  ],
+  "fixed_rule": {
+    "labels": [
+      "0",
+      "1"
+    ],
+    "per_class": {
+      "0": {
+        "precision": 0.455,
+        "recall": 1.0,
+        "f1": 0.625,
+        "support": 5
+      },
+      "1": {
+        "precision": 1.0,
+        "recall": 0.333,
+        "f1": 0.5,
+        "support": 9
+      }
+    },
+    "macro_f1": 0.562,
+    "accuracy": 0.571,
+    "confusion_matrix": [
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        3
+      ]
+    ],
+    "n": 14,
+    "note": "confusion_matrix 列=真實、欄=預測；macro-F1 只平均測試集中有樣本的類別"
+  },
+  "decision_tree": {
+    "labels": [
+      "0",
+      "1"
+    ],
+    "per_class": {
+      "0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 9
+      }
+    },
+    "macro_f1": 1.0,
+    "accuracy": 1.0,
+    "confusion_matrix": [
+      [
+        5,
+        0
+      ],
+      [
+        0,
+        9
+      ]
+    ],
+    "n": 14,
+    "note": "confusion_matrix 列=真實、欄=預測；macro-F1 只平均測試集中有樣本的類別",
+    "params": {
+      "max_depth": 3,
+      "min_samples_leaf": 3,
+      "class_weight": "balanced",
+      "random_state": 0
+    },
+    "tree_text": "|--- delta_temperature_c <= 0.30\n|   |--- class: 1\n|--- delta_temperature_c >  0.30\n|   |--- delta_dew_point_c <= 0.47\n|   |   |--- class: 0\n|   |--- delta_dew_point_c >  0.47\n|   |   |--- class: 0\n"
+  },
+  "selected": "decision_tree"
+}

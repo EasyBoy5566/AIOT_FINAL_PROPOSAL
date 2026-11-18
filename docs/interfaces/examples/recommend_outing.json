@@ -1,0 +1,60 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "recommendation_candidate",
+  "scenario": "outing",
+  "ruleset_version": "rules/1.0.0",
+  "status": "ok",
+  "rules_fired": [],
+  "evidence": [
+    {
+      "kind": "forecast_temperature",
+      "value": {
+        "min": 24.0,
+        "max": 26.0,
+        "mean": 25.0
+      },
+      "unit": "°C",
+      "time": "2026-11-19T09:00:00+08:00～2026-11-19T15:00:00+08:00",
+      "source": "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時），取得於 2026-11-19T07:00:00+08:00",
+      "ref": "臺中市南區"
+    },
+    {
+      "kind": "forecast_relative_humidity",
+      "value": {
+        "min": 62.0,
+        "max": 70.0,
+        "mean": 65.3
+      },
+      "unit": "%",
+      "time": "2026-11-19T09:00:00+08:00～2026-11-19T15:00:00+08:00",
+      "source": "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時），取得於 2026-11-19T07:00:00+08:00",
+      "ref": "臺中市南區"
+    },
+    {
+      "kind": "forecast_pop_max",
+      "value": {
+        "max": 20.0
+      },
+      "unit": "%",
+      "time": "2026-11-19T09:00:00+08:00～2026-11-19T15:00:00+08:00",
+      "source": "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時），取得於 2026-11-19T07:00:00+08:00",
+      "ref": "臺中市南區"
+    },
+    {
+      "kind": "forecast_weather",
+      "value": [
+        "多雲"
+      ],
+      "unit": null,
+      "time": "2026-11-19T09:00:00+08:00～2026-11-19T15:00:00+08:00",
+      "source": "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時），取得於 2026-11-19T07:00:00+08:00",
+      "ref": "臺中市南區"
+    }
+  ],
+  "limitations": [],
+  "missing": [],
+  "clarify": null,
+  "device_state": {
+    "status": "unknown"
+  }
+}

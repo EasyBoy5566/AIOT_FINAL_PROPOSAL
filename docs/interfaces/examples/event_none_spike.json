@@ -1,0 +1,25 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "room_id": "room1",
+  "detector_version": "events/1.0.0",
+  "config": {
+    "version": "cfg-2026w2-default",
+    "max_gap_min": 5.0,
+    "slope_window_min": 10.0,
+    "temp_slope_thr": 0.05,
+    "rh_slope_thr": 0.25,
+    "min_duration_min": 5.0,
+    "min_delta_temp": 0.8,
+    "min_delta_rh": 3.0,
+    "merge_gap_min": 20.0
+  },
+  "quality": {
+    "total": 90,
+    "valid": 90,
+    "invalid": {},
+    "duplicates": 0,
+    "gaps": []
+  },
+  "runs": 0,
+  "events": []
+}

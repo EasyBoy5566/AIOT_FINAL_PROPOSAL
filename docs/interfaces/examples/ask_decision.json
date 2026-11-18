@@ -1,0 +1,17 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "first": {
+    "event_id": "ev-room1-20261119T1025",
+    "ask": true,
+    "ask_status": "asked",
+    "asked_at": "2026-11-19T10:39:00+08:00",
+    "policy_version": "ask/1.0.0"
+  },
+  "within_cooldown": {
+    "event_id": "ev-room1-20261119T1025",
+    "ask": false,
+    "ask_status": "suppressed_cooldown",
+    "next_allowed_at": "2026-11-19T11:09:00+08:00",
+    "policy_version": "ask/1.0.0"
+  }
+}

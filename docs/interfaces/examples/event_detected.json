@@ -1,0 +1,58 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "room_id": "room1",
+  "detector_version": "events/1.0.0",
+  "config": {
+    "version": "cfg-2026w2-default",
+    "max_gap_min": 5.0,
+    "slope_window_min": 10.0,
+    "temp_slope_thr": 0.05,
+    "rh_slope_thr": 0.25,
+    "min_duration_min": 5.0,
+    "min_delta_temp": 0.8,
+    "min_delta_rh": 3.0,
+    "merge_gap_min": 20.0
+  },
+  "quality": {
+    "total": 90,
+    "valid": 90,
+    "invalid": {},
+    "duplicates": 0,
+    "gaps": []
+  },
+  "runs": 1,
+  "events": [
+    {
+      "type": "event",
+      "event_id": "ev-room1-20261119T1025",
+      "room_id": "room1",
+      "start_at": "2026-11-19T10:25:00+08:00",
+      "decision_at": "2026-11-19T10:39:00+08:00",
+      "end_at": "2026-11-19T11:00:00+08:00",
+      "features": {
+        "delta_temperature_c": -1.08,
+        "delta_relative_humidity_pct": -1.35,
+        "slope_temperature_c_per_min": -0.12,
+        "slope_relative_humidity_pct_per_min": -0.15,
+        "start_temperature_c": 26.0,
+        "start_relative_humidity_pct": 65.0,
+        "delta_dew_point_c": -1.36,
+        "minutes_to_decision": 14.0,
+        "hour_of_day": 10,
+        "direction_temperature": "down",
+        "direction_humidity": "flat"
+      },
+      "summary": {
+        "total_delta_temperature_c": -3.0,
+        "total_delta_relative_humidity_pct": -3.75,
+        "duration_minutes": 35.0
+      },
+      "n_runs": 1,
+      "run_decisions": [
+        "2026-11-19T10:39:00+08:00"
+      ],
+      "quality_flag": "ok",
+      "event_version": "events/1.0.0+cfg-2026w2-default"
+    }
+  ]
+}

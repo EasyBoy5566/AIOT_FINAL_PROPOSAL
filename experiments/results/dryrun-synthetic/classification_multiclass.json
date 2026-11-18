@@ -1,0 +1,135 @@
+{
+  "task": "multiclass",
+  "eval_version": "eval/1.0.0",
+  "fixed_rule_version": "fixed-rule/1.0.0",
+  "n_events": 52,
+  "n_labeled": 47,
+  "n_excluded_unknown_or_other": 5,
+  "split": {
+    "method": "time_by_event_start",
+    "test_frac": 0.3,
+    "cutoff_start_at": "2026-11-12T07:20:00+08:00",
+    "train_period": [
+      "2026-11-02T07:45:00+08:00",
+      "2026-11-11T19:22:00+08:00"
+    ],
+    "test_period": [
+      "2026-11-12T07:20:00+08:00",
+      "2026-11-15T10:53:00+08:00"
+    ],
+    "n_train": 33,
+    "n_test": 14,
+    "train_class_dist": {
+      "ac": 7,
+      "dehumidifier": 6,
+      "mixed": 4,
+      "none_confirmed": 7,
+      "window": 9
+    },
+    "test_class_dist": {
+      "ac": 2,
+      "dehumidifier": 4,
+      "mixed": 2,
+      "none_confirmed": 5,
+      "window": 1
+    }
+  },
+  "features": [
+    "delta_temperature_c",
+    "delta_relative_humidity_pct",
+    "slope_temperature_c_per_min",
+    "slope_relative_humidity_pct_per_min",
+    "start_temperature_c",
+    "start_relative_humidity_pct",
+    "delta_dew_point_c",
+    "minutes_to_decision",
+    "hour_of_day"
+  ],
+  "limitations": [
+    "樣本不足，不訓練決策樹，維持規則版：測試集類別 ac 只有 2 筆；測試集類別 window 只有 1 筆；訓練集類別 mixed 只有 4 筆；測試集類別 mixed 只有 2 筆"
+  ],
+  "fixed_rule": {
+    "labels": [
+      "ac",
+      "dehumidifier",
+      "window",
+      "mixed",
+      "none_confirmed"
+    ],
+    "per_class": {
+      "ac": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "support": 2
+      },
+      "dehumidifier": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4
+      },
+      "window": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "mixed": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2
+      },
+      "none_confirmed": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667,
+        "support": 5
+      }
+    },
+    "macro_f1": 0.433,
+    "accuracy": 0.5,
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        5
+      ]
+    ],
+    "n": 14,
+    "note": "confusion_matrix 列=真實、欄=預測；macro-F1 只平均測試集中有樣本的類別"
+  },
+  "decision_tree": null,
+  "selected": "fixed_rule"
+}

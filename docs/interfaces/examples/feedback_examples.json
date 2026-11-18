@@ -1,0 +1,31 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "rows": [
+    {
+      "event_id": "ev-room1-20261119T1025",
+      "asked_at": "2026-11-19T10:39:00+08:00",
+      "replied_at": "2026-11-19T10:50:00+08:00",
+      "operation_at": "2026-11-19T10:28:00+08:00",
+      "operation_label": "ac",
+      "certainty": "sure"
+    },
+    {
+      "event_id": "ev-room1-20261119T1025",
+      "asked_at": "2026-11-19T10:39:00+08:00",
+      "replied_at": "2026-11-19T11:05:00+08:00",
+      "operation_at": "2026-11-19T10:28:00+08:00",
+      "operation_label": "mixed",
+      "certainty": "sure",
+      "_note": "更正：以 replied_at 最晚者為準"
+    },
+    {
+      "event_id": "ev-room1-20261119T1400",
+      "asked_at": "2026-11-19T14:15:00+08:00",
+      "replied_at": null,
+      "operation_at": null,
+      "operation_label": null,
+      "certainty": null,
+      "_note": "未回覆 → unknown"
+    }
+  ]
+}

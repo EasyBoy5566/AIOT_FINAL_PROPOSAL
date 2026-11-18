@@ -1,0 +1,107 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "recommendation_candidate",
+  "scenario": "device",
+  "ruleset_version": "rules/1.0.0",
+  "status": "ok",
+  "rules_fired": [
+    {
+      "rule_id": "DK-01",
+      "rule_version": "rules/1.0.0",
+      "title": "室內濕度持續偏高",
+      "basis": "source",
+      "source_ref": "[7] US EPA, A Brief Guide to Mold, Moisture and Your Home",
+      "suggestion": "室內濕度 73%（≥60%），可考慮使用除濕機或改善通風。",
+      "evidence": [
+        {
+          "kind": "indoor_temperature",
+          "value": 29.0,
+          "unit": "°C",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        },
+        {
+          "kind": "indoor_relative_humidity",
+          "value": 72.95,
+          "unit": "%",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        }
+      ],
+      "limitations": [
+        "60% 為室內濕度參考值，不是舒適度或黴菌問題的診斷。"
+      ]
+    },
+    {
+      "rule_id": "DK-03",
+      "rule_version": "rules/1.0.0",
+      "title": "室內偏熱",
+      "basis": "team_default",
+      "source_ref": "[4][6] 熱舒適受多項環境與個人因素影響",
+      "suggestion": "室內溫度 29.0°C（≥28°C），若覺得悶熱可考慮使用冷氣或電扇。",
+      "evidence": [
+        {
+          "kind": "indoor_temperature",
+          "value": 29.0,
+          "unit": "°C",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        },
+        {
+          "kind": "indoor_relative_humidity",
+          "value": 72.95,
+          "unit": "%",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        }
+      ],
+      "limitations": [
+        "未量測風速、輻射、衣著與活動量；28°C 為團隊預設，可依個人偏好調整。"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "indoor_temperature",
+      "value": 29.0,
+      "unit": "°C",
+      "time": "2026-11-19T10:59:00+08:00",
+      "source": "室內感測（room1）",
+      "ref": null
+    },
+    {
+      "kind": "indoor_relative_humidity",
+      "value": 72.95,
+      "unit": "%",
+      "time": "2026-11-19T10:59:00+08:00",
+      "source": "室內感測（room1）",
+      "ref": null
+    },
+    {
+      "kind": "indoor_trend",
+      "value": {
+        "delta_temperature_c": 0.0,
+        "delta_relative_humidity_pct": 1.5
+      },
+      "unit": null,
+      "time": "近 30.0 分鐘",
+      "source": "室內感測（room1）",
+      "ref": null
+    }
+  ],
+  "limitations": [
+    "60% 為室內濕度參考值，不是舒適度或黴菌問題的診斷。",
+    "未量測風速、輻射、衣著與活動量；28°C 為團隊預設，可依個人偏好調整。"
+  ],
+  "missing": [],
+  "clarify": null,
+  "device_state": {
+    "ac": "unknown",
+    "dehumidifier": "off",
+    "confirmed_at": null
+  }
+}

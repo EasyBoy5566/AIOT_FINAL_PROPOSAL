@@ -1,0 +1,23 @@
+{
+  "policy_version": "ask/1.0.0",
+  "monitored_hours": 336.0,
+  "n_runs": 64,
+  "baseline": {
+    "n_asks": 64,
+    "n_events_asked": 52,
+    "asks_per_hour": 0.19,
+    "duplicate_ask_rate": 0.188,
+    "reply_rate_actual": 0.769
+  },
+  "merged_cooldown": {
+    "n_asks": 52,
+    "n_events_asked": 52,
+    "asks_per_hour": 0.155,
+    "duplicate_ask_rate": 0.0,
+    "reply_rate_actual": 0.769,
+    "n_suppressed_by_cooldown": 0,
+    "cooldown_min": 30.0,
+    "merge_gap_min": 20.0
+  },
+  "note": "回覆率依實際回覆計算；實際只部署一種政策時，另一種政策的回覆率無法觀察，記為 null 或只對共同事件計算。 duplicate_ask_rate = 同一合併事件的第 2 次以後詢問 / 總詢問數。"
+}

@@ -1,0 +1,26 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "rows": [
+    {
+      "room_id": "room1",
+      "measured_at": "2026-11-19T10:00:00+08:00",
+      "temperature_c": 26.0,
+      "relative_humidity_pct": 65.0,
+      "quality_flag": "ok"
+    },
+    {
+      "room_id": "room1",
+      "measured_at": "2026-11-19T10:01:00+08:00",
+      "temperature_c": 26.0,
+      "relative_humidity_pct": 65.0,
+      "quality_flag": "ok"
+    },
+    {
+      "room_id": "room1",
+      "measured_at": "2026-11-19T10:02:00+08:00",
+      "temperature_c": 26.0,
+      "relative_humidity_pct": 65.0,
+      "quality_flag": "ok"
+    }
+  ]
+}

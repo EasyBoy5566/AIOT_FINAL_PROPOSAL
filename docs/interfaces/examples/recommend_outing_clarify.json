@@ -1,0 +1,17 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "recommendation_candidate",
+  "scenario": "outing",
+  "ruleset_version": "rules/1.0.0",
+  "status": "needs_clarification",
+  "rules_fired": [],
+  "evidence": [],
+  "limitations": [],
+  "missing": [
+    "目的地預報不可用：目標時段不完整或結束早於開始"
+  ],
+  "clarify": "請提供外出的行政區與預計時段。",
+  "device_state": {
+    "status": "unknown"
+  }
+}

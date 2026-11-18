@@ -1,0 +1,59 @@
+{
+  "tag": "dryrun-synthetic",
+  "data_origin": "synthetic",
+  "n_measurements": 20089,
+  "measurements_fingerprint": "4dd4fedf74271bb0",
+  "period": [
+    "2026-11-02T00:00:00+08:00",
+    "2026-11-15T23:59:00+08:00"
+  ],
+  "monitored_hours": 336.0,
+  "quality": {
+    "total": 20089,
+    "valid": 20089,
+    "invalid": {},
+    "duplicates": 0,
+    "gaps": [
+      {
+        "from": "2026-11-08T08:59:00+08:00",
+        "to": "2026-11-08T09:25:00+08:00",
+        "minutes": 26.0
+      },
+      {
+        "from": "2026-11-08T17:22:00+08:00",
+        "to": "2026-11-08T17:41:00+08:00",
+        "minutes": 19.0
+      },
+      {
+        "from": "2026-11-11T18:01:00+08:00",
+        "to": "2026-11-11T18:30:00+08:00",
+        "minutes": 29.0
+      }
+    ]
+  },
+  "n_runs": 64,
+  "n_events": 52,
+  "event_config": {
+    "version": "cfg-2026w2-default",
+    "max_gap_min": 5.0,
+    "slope_window_min": 10.0,
+    "temp_slope_thr": 0.05,
+    "rh_slope_thr": 0.25,
+    "min_duration_min": 5.0,
+    "min_delta_temp": 0.8,
+    "min_delta_rh": 3.0,
+    "merge_gap_min": 20.0
+  },
+  "env": {
+    "python": "3.13.18",
+    "sklearn": "1.9.1",
+    "detector_version": "events/1.0.0",
+    "generated_at": "2026-11-18T19:01:15+08:00"
+  },
+  "inputs": {
+    "measurements": null,
+    "feedback": null,
+    "op_log": null,
+    "synthetic_seed": 7
+  }
+}

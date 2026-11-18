@@ -1,0 +1,24 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "indoor",
+  "room_id": "room1",
+  "status": "ok",
+  "latest": {
+    "temperature_c": 29.0,
+    "relative_humidity_pct": 72.95
+  },
+  "measured_at": "2026-11-19T10:59:00+08:00",
+  "age_minutes": 1.0,
+  "trend": {
+    "window_minutes": 30.0,
+    "delta_temperature_c": 0.0,
+    "delta_relative_humidity_pct": 1.5
+  },
+  "quality": {
+    "total": 60,
+    "valid": 60,
+    "invalid": {},
+    "duplicates": 0,
+    "gaps": []
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "recommendation_candidate",
+  "scenario": "laundry",
+  "ruleset_version": "rules/1.0.0",
+  "status": "partial",
+  "rules_fired": [
+    {
+      "rule_id": "DK-05",
+      "rule_version": "rules/1.0.0",
+      "title": "室內晾衣條件",
+      "basis": "team_default",
+      "source_ref": "[7] 室內濕度參考；晾衣門檻為團隊預設",
+      "suggestion": "室內濕度 73%（≥70%），室內晾衣建議搭配除濕機或通風。",
+      "evidence": [
+        {
+          "kind": "indoor_temperature",
+          "value": 29.0,
+          "unit": "°C",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        },
+        {
+          "kind": "indoor_relative_humidity",
+          "value": 72.95,
+          "unit": "%",
+          "time": "2026-11-19T10:59:00+08:00",
+          "source": "室內感測（room1）",
+          "ref": null
+        },
+        {
+          "kind": "indoor_trend",
+          "value": {
+            "delta_temperature_c": 0.0,
+            "delta_relative_humidity_pct": 1.5
+          },
+          "unit": null,
+          "time": "近 30.0 分鐘",
+          "source": "室內感測（room1）",
+          "ref": null
+        }
+      ],
+      "limitations": [
+        "不預測乾燥時間；衣物材質、厚度、通風會影響結果。"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "indoor_temperature",
+      "value": 29.0,
+      "unit": "°C",
+      "time": "2026-11-19T10:59:00+08:00",
+      "source": "室內感測（room1）",
+      "ref": null
+    },
+    {
+      "kind": "indoor_relative_humidity",
+      "value": 72.95,
+      "unit": "%",
+      "time": "2026-11-19T10:59:00+08:00",
+      "source": "室內感測（room1）",
+      "ref": null
+    },
+    {
+      "kind": "indoor_trend",
+      "value": {
+        "delta_temperature_c": 0.0,
+        "delta_relative_humidity_pct": 1.5
+      },
+      "unit": null,
+      "time": "近 30.0 分鐘",
+      "source": "室內感測（room1）",
+      "ref": null
+    }
+  ],
+  "limitations": [
+    "只取得部分資料，僅能就可用的一側提供建議：曬衣地點預報取得失敗：API 連線失敗：<urlopen error timed out>",
+    "不預測乾燥時間；衣物材質、厚度、通風會影響結果。"
+  ],
+  "missing": [
+    "曬衣地點預報取得失敗：API 連線失敗：<urlopen error timed out>"
+  ],
+  "clarify": null,
+  "device_state": {
+    "status": "unknown"
+  }
+}

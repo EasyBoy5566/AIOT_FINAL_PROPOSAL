@@ -1,0 +1,117 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "type": "forecast",
+  "status": "ok",
+  "tool_version": "cwa_forecast/1.0.0",
+  "source": "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時）",
+  "dataset_id": "F-D0047-073",
+  "location": {
+    "county": "臺中市",
+    "district": "南區"
+  },
+  "target": {
+    "start": "2026-11-19T09:00:00+08:00",
+    "end": "2026-11-19T15:00:00+08:00"
+  },
+  "retrieved_at": "2026-11-19T07:00:00+08:00",
+  "issued_at": null,
+  "valid_from": "2026-11-19T06:00:00+08:00",
+  "valid_to": "2026-11-22T06:00:00+08:00",
+  "values": {
+    "temperature_c": {
+      "min": 24.0,
+      "max": 26.0,
+      "mean": 25.0
+    },
+    "relative_humidity_pct": {
+      "min": 62.0,
+      "max": 70.0,
+      "mean": 65.3
+    },
+    "pop_pct": {
+      "max": 20.0
+    },
+    "apparent_temperature_c": null,
+    "weather": [
+      "多雲"
+    ]
+  },
+  "slots_used": [
+    {
+      "field": "pop_pct",
+      "start": "2026-11-19T09:00:00+08:00",
+      "end": "2026-11-19T12:00:00+08:00",
+      "value": 10.0
+    },
+    {
+      "field": "pop_pct",
+      "start": "2026-11-19T12:00:00+08:00",
+      "end": "2026-11-19T15:00:00+08:00",
+      "value": 20.0
+    },
+    {
+      "field": "relative_humidity_pct",
+      "start": "2026-11-19T09:00:00+08:00",
+      "end": "2026-11-19T09:00:00+08:00",
+      "value": 70.0
+    },
+    {
+      "field": "relative_humidity_pct",
+      "start": "2026-11-19T12:00:00+08:00",
+      "end": "2026-11-19T12:00:00+08:00",
+      "value": 62.0
+    },
+    {
+      "field": "relative_humidity_pct",
+      "start": "2026-11-19T15:00:00+08:00",
+      "end": "2026-11-19T15:00:00+08:00",
+      "value": 64.0
+    },
+    {
+      "field": "temperature_c",
+      "start": "2026-11-19T09:00:00+08:00",
+      "end": "2026-11-19T09:00:00+08:00",
+      "value": 24.0
+    },
+    {
+      "field": "temperature_c",
+      "start": "2026-11-19T12:00:00+08:00",
+      "end": "2026-11-19T12:00:00+08:00",
+      "value": 26.0
+    },
+    {
+      "field": "temperature_c",
+      "start": "2026-11-19T15:00:00+08:00",
+      "end": "2026-11-19T15:00:00+08:00",
+      "value": 25.0
+    },
+    {
+      "field": "weather",
+      "start": "2026-11-19T09:00:00+08:00",
+      "end": "2026-11-19T12:00:00+08:00",
+      "value": "多雲"
+    },
+    {
+      "field": "weather",
+      "start": "2026-11-19T12:00:00+08:00",
+      "end": "2026-11-19T15:00:00+08:00",
+      "value": "多雲"
+    },
+    {
+      "field": "weather_code",
+      "start": "2026-11-19T09:00:00+08:00",
+      "end": "2026-11-19T12:00:00+08:00",
+      "value": "04"
+    },
+    {
+      "field": "weather_code",
+      "start": "2026-11-19T12:00:00+08:00",
+      "end": "2026-11-19T15:00:00+08:00",
+      "value": "04"
+    }
+  ],
+  "missing_fields": [],
+  "message": null,
+  "snapshot_id": null,
+  "geocode": "6600700"
+}
