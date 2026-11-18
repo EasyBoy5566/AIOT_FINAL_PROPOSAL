@@ -2,6 +2,24 @@
 
 > 第 4 週和 A、C 一起合併進 DESIGN.md。標 `TODO` 的地方要等真實資料跑完再填。
 
+## 4.1 補充：與 A 的資料格式對接（v1）
+
+室內量測、操作日誌、候選事件與回覆的欄位以《室內感測與回饋資料格式 v1》（主責 高群軒）為準。
+B 內部保留較明確的命名，差異集中在 `src/common/adapters.py`，不散落在各模組：
+
+| 項目 | A v1 | B 內部 |
+| --- | --- | --- |
+| 時間 | UTC `YYYY-MM-DDTHH:mm:ss.SSSZ` | Asia/Taipei，秒精度 |
+| 品質旗標 | `ok` / `missing` / `invalid_range` | 同左；不在值域者原名計數 |
+| 明確無操作 | `none` | `none_confirmed` |
+| 未知 | 欄位 `null` | `unknown` |
+| 事件判定時間 | `detected_at` | `decision_at`（同值） |
+| 事件版本 | `event_version`（整數，遞增） | `detector_version` / `config_version`（字串） |
+
+量測去重以 A 的 `measurement_id` 為唯一鍵；歷史查詢為半開區間 `[from, to)`。
+回覆取用：同一 `feedback_id` 取 `feedback_version` 最大者，同一事件優先取 `status = confirmed`。
+只有 `confirmed` 提供標記，其餘為 unknown 並排除於分類之外。
+
 ## 4.2 補充：預報快照實際欄位
 
 `forecast_snapshots(snapshot_id, location_id, retrieved_at, issued_at, valid_from, valid_to, forecast_payload, source, dataset_id, tool_version)`
@@ -34,7 +52,8 @@ TODO：用訓練期實測資料確認門檻，記錄調整前後的事件數。
 - 決策樹：`max_depth=3, min_samples_leaf=3, class_weight=balanced`。
 - 切分：依事件開始時間，較晚 30% 作測試。
 - 最低樣本：訓練 ≥ 20、測試 ≥ 10，每類訓練 ≥ 5、測試 ≥ 3；不到就不訓練決策樹，維持規則版。
-- 標記：見 `labels.py`。unknown 排除在分類之外，並報告排除數。
+- 標記：見 `labels.py`（labels/1.1.0）。unknown 與 other 排除在分類之外，並分別報告排除數。
+- 無操作日誌（A 的 `none`）須有觀察時段且涵蓋事件的 `[start_at, decision_at]` 才採用。
 
 ## 6. 規則表（rules/1.0.0）
 

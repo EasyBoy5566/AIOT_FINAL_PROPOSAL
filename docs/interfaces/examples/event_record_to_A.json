@@ -1,0 +1,29 @@
+{
+  "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "_note": "B 的事件寫回 A §3 的保存格式（src.common.adapters.event_to_a）",
+  "rows": [
+    {
+      "event_id": "ev-room-01-20261119T1025",
+      "room_id": "room-01",
+      "start_at": "2026-11-19T02:25:00.000Z",
+      "end_at": "2026-11-19T03:00:00.000Z",
+      "detected_at": "2026-11-19T02:39:00.000Z",
+      "features": {
+        "delta_temperature_c": -1.08,
+        "delta_relative_humidity_pct": -1.35,
+        "slope_temperature_c_per_min": -0.12,
+        "slope_relative_humidity_pct_per_min": -0.15,
+        "start_temperature_c": 26.0,
+        "start_relative_humidity_pct": 65.0,
+        "delta_dew_point_c": -1.36,
+        "minutes_to_decision": 14.0,
+        "hour_of_day": 10,
+        "direction_temperature": "down",
+        "direction_humidity": "flat",
+        "_version": "features/1.0.0"
+      },
+      "quality_flag": "ok",
+      "event_version": 1
+    }
+  ]
+}

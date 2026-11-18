@@ -1,6 +1,6 @@
 {
   "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
-  "room_id": "room1",
+  "room_id": "room-01",
   "detector_version": "events/1.0.0",
   "config": {
     "version": "cfg-2026w2-default",

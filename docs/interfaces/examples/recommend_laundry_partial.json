@@ -18,7 +18,7 @@
           "value": 29.0,
           "unit": "°C",
           "time": "2026-11-19T10:59:00+08:00",
-          "source": "室內感測（room1）",
+          "source": "室內感測（room-01）",
           "ref": null
         },
         {
@@ -26,7 +26,7 @@
           "value": 72.95,
           "unit": "%",
           "time": "2026-11-19T10:59:00+08:00",
-          "source": "室內感測（room1）",
+          "source": "室內感測（room-01）",
           "ref": null
         },
         {
@@ -37,7 +37,7 @@
           },
           "unit": null,
           "time": "近 30.0 分鐘",
-          "source": "室內感測（room1）",
+          "source": "室內感測（room-01）",
           "ref": null
         }
       ],
@@ -52,7 +52,7 @@
       "value": 29.0,
       "unit": "°C",
       "time": "2026-11-19T10:59:00+08:00",
-      "source": "室內感測（room1）",
+      "source": "室內感測（room-01）",
       "ref": null
     },
     {
@@ -60,7 +60,7 @@
       "value": 72.95,
       "unit": "%",
       "time": "2026-11-19T10:59:00+08:00",
-      "source": "室內感測（room1）",
+      "source": "室內感測（room-01）",
       "ref": null
     },
     {
@@ -71,7 +71,7 @@
       },
       "unit": null,
       "time": "近 30.0 分鐘",
-      "source": "室內感測（room1）",
+      "source": "室內感測（room-01）",
       "ref": null
     }
   ],

@@ -71,11 +71,12 @@ def test_invalid_values_filtered():
     rows = series(30, flat)
     rows[5]["temperature_c"] = None
     rows[6]["relative_humidity_pct"] = 150
-    rows[7]["quality_flag"] = "sensor_error"
+    rows[7]["quality_flag"] = "sensor_error"      # 不在 A v1 的值域：原樣計數，不靜默改名
     rows.append(dict(rows[0]))
     segs, rep = valid_segments(rows)
     assert rep.valid == 27 and rep.duplicates == 1
-    assert rep.invalid == {"missing_value": 1, "out_of_range": 1, "sensor_error": 1}
+    # 原因名與 A 規格 §1 的 quality_flag 同一組值
+    assert rep.invalid == {"missing": 1, "invalid_range": 1, "sensor_error": 1}
 
 
 def two_bumps(gap_min):

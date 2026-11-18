@@ -18,7 +18,7 @@ from datetime import datetime
 
 from src.analytics.ask_policy import POLICY_VERSION, AskConfig, replay_baseline, replay_merged_cooldown
 from src.analytics.events import DETECTOR_VERSION, EventConfig, Run
-from src.common.schema import OperationLabel, parse_time, to_binary
+from src.common.schema import REPLIED_FEEDBACK_STATUSES, OperationLabel, parse_time, to_binary
 
 EVAL_VERSION = "eval/1.0.0"
 FIXED_RULE_VERSION = "fixed-rule/1.0.0"
@@ -175,10 +175,16 @@ def compare_classifiers(events: list[dict], task: str = "binary", test_frac: flo
 
 def ask_burden(runs: list[Run], monitored_hours: float, feedback: list[dict] | None = None,
                ask_cfg: AskConfig = AskConfig(), ev_cfg: EventConfig = EventConfig()) -> dict:
-    """同一批候選偵測回放兩種詢問政策。回覆率只用實際回覆（feedback 中有 replied_at 的 event_id）。"""
+    """同一批候選偵測回放兩種詢問政策。
+
+    回覆率只算實際回覆：A 規格 §4 的 confirmed 與 uncertain 有 replied_at，
+    pending 與 expired 為 null。未帶 status 的舊資料退回看 replied_at。
+    """
     base = replay_baseline(runs)
     merged, suppressed = replay_merged_cooldown(runs, ask_cfg, ev_cfg)
-    replied = {f["event_id"] for f in (feedback or []) if f.get("replied_at")}
+    replied = {f["event_id"] for f in (feedback or [])
+               if (f.get("status") in REPLIED_FEEDBACK_STATUSES
+                   if f.get("status") is not None else bool(f.get("replied_at")))}
 
     def summary(asks: list[dict]) -> dict:
         per_event: dict[str, int] = {}

@@ -1,10 +1,11 @@
 [
   {
     "type": "event",
-    "event_id": "ev-room1-20261102T0745",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261102T0745",
+    "room_id": "room-01",
     "start_at": "2026-11-02T07:45:00+08:00",
     "decision_at": "2026-11-02T07:59:00+08:00",
+    "detected_at": "2026-11-02T07:59:00+08:00",
     "end_at": "2026-11-02T08:20:00+08:00",
     "features": {
       "delta_temperature_c": 0.3,
@@ -29,17 +30,22 @@
       "2026-11-02T07:59:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00000",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261102T0931",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261102T0931",
+    "room_id": "room-01",
     "start_at": "2026-11-02T09:31:00+08:00",
     "decision_at": "2026-11-02T09:45:00+08:00",
+    "detected_at": "2026-11-02T09:45:00+08:00",
     "end_at": "2026-11-02T10:08:00+08:00",
     "features": {
       "delta_temperature_c": 0.29,
@@ -64,17 +70,21 @@
       "2026-11-02T09:45:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261102T1534",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261102T1534",
+    "room_id": "room-01",
     "start_at": "2026-11-02T15:34:00+08:00",
     "decision_at": "2026-11-02T15:48:00+08:00",
+    "detected_at": "2026-11-02T15:48:00+08:00",
     "end_at": "2026-11-02T17:26:00+08:00",
     "features": {
       "delta_temperature_c": -1.13,
@@ -100,17 +110,22 @@
       "2026-11-02T17:05:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00001",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261103T0807",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261103T0807",
+    "room_id": "room-01",
     "start_at": "2026-11-03T08:07:00+08:00",
     "decision_at": "2026-11-03T08:21:00+08:00",
+    "detected_at": "2026-11-03T08:21:00+08:00",
     "end_at": "2026-11-03T08:55:00+08:00",
     "features": {
       "delta_temperature_c": 0.25,
@@ -135,17 +150,22 @@
       "2026-11-03T08:21:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00002",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261103T1045",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261103T1045",
+    "room_id": "room-01",
     "start_at": "2026-11-03T10:45:00+08:00",
     "decision_at": "2026-11-03T10:59:00+08:00",
+    "detected_at": "2026-11-03T10:59:00+08:00",
     "end_at": "2026-11-03T11:02:00+08:00",
     "features": {
       "delta_temperature_c": -0.63,
@@ -170,17 +190,22 @@
       "2026-11-03T10:59:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00003",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261103T1619",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261103T1619",
+    "room_id": "room-01",
     "start_at": "2026-11-03T16:19:00+08:00",
     "decision_at": "2026-11-03T16:33:00+08:00",
+    "detected_at": "2026-11-03T16:33:00+08:00",
     "end_at": "2026-11-03T16:51:00+08:00",
     "features": {
       "delta_temperature_c": -1.04,
@@ -205,17 +230,22 @@
       "2026-11-03T16:33:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "unknown",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "uncertain",
+    "feedback_id": "fb-00004",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261103T2103",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261103T2103",
+    "room_id": "room-01",
     "start_at": "2026-11-03T21:03:00+08:00",
     "decision_at": "2026-11-03T21:17:00+08:00",
+    "detected_at": "2026-11-03T21:17:00+08:00",
     "end_at": "2026-11-03T21:42:00+08:00",
     "features": {
       "delta_temperature_c": 0.3,
@@ -240,17 +270,22 @@
       "2026-11-03T21:17:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00005",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261104T0742",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261104T0742",
+    "room_id": "room-01",
     "start_at": "2026-11-04T07:42:00+08:00",
     "decision_at": "2026-11-04T07:56:00+08:00",
+    "detected_at": "2026-11-04T07:56:00+08:00",
     "end_at": "2026-11-04T08:27:00+08:00",
     "features": {
       "delta_temperature_c": -1.42,
@@ -275,17 +310,23 @@
       "2026-11-04T07:56:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00006",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261104T0915",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261104T0915",
+    "room_id": "room-01",
     "start_at": "2026-11-04T09:15:00+08:00",
     "decision_at": "2026-11-04T09:29:00+08:00",
+    "detected_at": "2026-11-04T09:29:00+08:00",
     "end_at": "2026-11-04T09:30:00+08:00",
     "features": {
       "delta_temperature_c": -0.63,
@@ -310,17 +351,22 @@
       "2026-11-04T09:29:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00007",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261104T1645",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261104T1645",
+    "room_id": "room-01",
     "start_at": "2026-11-04T16:45:00+08:00",
     "decision_at": "2026-11-04T16:59:00+08:00",
+    "detected_at": "2026-11-04T16:59:00+08:00",
     "end_at": "2026-11-04T17:25:00+08:00",
     "features": {
       "delta_temperature_c": -1.23,
@@ -346,17 +392,22 @@
       "2026-11-04T17:25:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00008",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261105T0840",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261105T0840",
+    "room_id": "room-01",
     "start_at": "2026-11-05T08:40:00+08:00",
     "decision_at": "2026-11-05T08:54:00+08:00",
+    "detected_at": "2026-11-05T08:54:00+08:00",
     "end_at": "2026-11-05T09:58:00+08:00",
     "features": {
       "delta_temperature_c": 0.69,
@@ -382,17 +433,21 @@
       "2026-11-05T09:37:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261105T1642",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261105T1642",
+    "room_id": "room-01",
     "start_at": "2026-11-05T16:42:00+08:00",
     "decision_at": "2026-11-05T16:56:00+08:00",
+    "detected_at": "2026-11-05T16:56:00+08:00",
     "end_at": "2026-11-05T17:01:00+08:00",
     "features": {
       "delta_temperature_c": -0.85,
@@ -417,17 +472,22 @@
       "2026-11-05T16:56:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00009",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261105T1753",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261105T1753",
+    "room_id": "room-01",
     "start_at": "2026-11-05T17:53:00+08:00",
     "decision_at": "2026-11-05T18:07:00+08:00",
+    "detected_at": "2026-11-05T18:07:00+08:00",
     "end_at": "2026-11-05T18:09:00+08:00",
     "features": {
       "delta_temperature_c": -0.76,
@@ -452,17 +512,23 @@
       "2026-11-05T18:07:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00010",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261105T2052",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261105T2052",
+    "room_id": "room-01",
     "start_at": "2026-11-05T20:52:00+08:00",
     "decision_at": "2026-11-05T21:06:00+08:00",
+    "detected_at": "2026-11-05T21:06:00+08:00",
     "end_at": "2026-11-05T21:31:00+08:00",
     "features": {
       "delta_temperature_c": 0.27,
@@ -487,17 +553,22 @@
       "2026-11-05T21:06:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00011",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261106T0802",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261106T0802",
+    "room_id": "room-01",
     "start_at": "2026-11-06T08:02:00+08:00",
     "decision_at": "2026-11-06T08:17:00+08:00",
+    "detected_at": "2026-11-06T08:17:00+08:00",
     "end_at": "2026-11-06T09:08:00+08:00",
     "features": {
       "delta_temperature_c": -0.72,
@@ -523,17 +594,22 @@
       "2026-11-06T08:48:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00012",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261106T1729",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261106T1729",
+    "room_id": "room-01",
     "start_at": "2026-11-06T17:29:00+08:00",
     "decision_at": "2026-11-06T17:43:00+08:00",
+    "detected_at": "2026-11-06T17:43:00+08:00",
     "end_at": "2026-11-06T17:49:00+08:00",
     "features": {
       "delta_temperature_c": -0.83,
@@ -558,17 +634,22 @@
       "2026-11-06T17:43:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00013",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261106T1831",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261106T1831",
+    "room_id": "room-01",
     "start_at": "2026-11-06T18:31:00+08:00",
     "decision_at": "2026-11-06T18:45:00+08:00",
+    "detected_at": "2026-11-06T18:45:00+08:00",
     "end_at": "2026-11-06T19:06:00+08:00",
     "features": {
       "delta_temperature_c": -1.1,
@@ -593,17 +674,21 @@
       "2026-11-06T18:45:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261106T2013",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261106T2013",
+    "room_id": "room-01",
     "start_at": "2026-11-06T20:13:00+08:00",
     "decision_at": "2026-11-06T20:27:00+08:00",
+    "detected_at": "2026-11-06T20:27:00+08:00",
     "end_at": "2026-11-06T20:37:00+08:00",
     "features": {
       "delta_temperature_c": -0.66,
@@ -629,17 +714,23 @@
       "2026-11-06T20:36:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00014",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261107T1305",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261107T1305",
+    "room_id": "room-01",
     "start_at": "2026-11-07T13:05:00+08:00",
     "decision_at": "2026-11-07T13:19:00+08:00",
+    "detected_at": "2026-11-07T13:19:00+08:00",
     "end_at": "2026-11-07T13:39:00+08:00",
     "features": {
       "delta_temperature_c": -0.94,
@@ -664,17 +755,22 @@
       "2026-11-07T13:19:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00015",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261107T1642",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261107T1642",
+    "room_id": "room-01",
     "start_at": "2026-11-07T16:42:00+08:00",
     "decision_at": "2026-11-07T16:56:00+08:00",
+    "detected_at": "2026-11-07T16:56:00+08:00",
     "end_at": "2026-11-07T17:35:00+08:00",
     "features": {
       "delta_temperature_c": -0.96,
@@ -700,17 +796,22 @@
       "2026-11-07T17:33:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00016",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261107T2013",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261107T2013",
+    "room_id": "room-01",
     "start_at": "2026-11-07T20:13:00+08:00",
     "decision_at": "2026-11-07T20:27:00+08:00",
+    "detected_at": "2026-11-07T20:27:00+08:00",
     "end_at": "2026-11-07T21:06:00+08:00",
     "features": {
       "delta_temperature_c": -1.21,
@@ -736,17 +837,22 @@
       "2026-11-07T21:03:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00017",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261108T0945",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261108T0945",
+    "room_id": "room-01",
     "start_at": "2026-11-08T09:45:00+08:00",
     "decision_at": "2026-11-08T09:59:00+08:00",
+    "detected_at": "2026-11-08T09:59:00+08:00",
     "end_at": "2026-11-08T10:08:00+08:00",
     "features": {
       "delta_temperature_c": -0.46,
@@ -771,17 +877,21 @@
       "2026-11-08T09:59:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261108T1523",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261108T1523",
+    "room_id": "room-01",
     "start_at": "2026-11-08T15:23:00+08:00",
     "decision_at": "2026-11-08T15:37:00+08:00",
+    "detected_at": "2026-11-08T15:37:00+08:00",
     "end_at": "2026-11-08T15:58:00+08:00",
     "features": {
       "delta_temperature_c": 0.21,
@@ -806,17 +916,21 @@
       "2026-11-08T15:37:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261108T1742",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261108T1742",
+    "room_id": "room-01",
     "start_at": "2026-11-08T17:42:00+08:00",
     "decision_at": "2026-11-08T17:56:00+08:00",
+    "detected_at": "2026-11-08T17:56:00+08:00",
     "end_at": "2026-11-08T17:57:00+08:00",
     "features": {
       "delta_temperature_c": 0.3,
@@ -841,17 +955,22 @@
       "2026-11-08T17:56:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00018",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261108T1921",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261108T1921",
+    "room_id": "room-01",
     "start_at": "2026-11-08T19:21:00+08:00",
     "decision_at": "2026-11-08T19:35:00+08:00",
+    "detected_at": "2026-11-08T19:35:00+08:00",
     "end_at": "2026-11-08T19:49:00+08:00",
     "features": {
       "delta_temperature_c": 0.59,
@@ -876,17 +995,22 @@
       "2026-11-08T19:35:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00019",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261109T0932",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261109T0932",
+    "room_id": "room-01",
     "start_at": "2026-11-09T09:32:00+08:00",
     "decision_at": "2026-11-09T09:46:00+08:00",
+    "detected_at": "2026-11-09T09:46:00+08:00",
     "end_at": "2026-11-09T09:53:00+08:00",
     "features": {
       "delta_temperature_c": 0.8,
@@ -911,17 +1035,23 @@
       "2026-11-09T09:46:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00020",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261109T1406",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261109T1406",
+    "room_id": "room-01",
     "start_at": "2026-11-09T14:06:00+08:00",
     "decision_at": "2026-11-09T14:20:00+08:00",
+    "detected_at": "2026-11-09T14:20:00+08:00",
     "end_at": "2026-11-09T14:44:00+08:00",
     "features": {
       "delta_temperature_c": -1.04,
@@ -946,17 +1076,22 @@
       "2026-11-09T14:20:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00021",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261109T1626",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261109T1626",
+    "room_id": "room-01",
     "start_at": "2026-11-09T16:26:00+08:00",
     "decision_at": "2026-11-09T16:40:00+08:00",
+    "detected_at": "2026-11-09T16:40:00+08:00",
     "end_at": "2026-11-09T17:05:00+08:00",
     "features": {
       "delta_temperature_c": -1.24,
@@ -981,17 +1116,22 @@
       "2026-11-09T16:40:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00022",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261109T1819",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261109T1819",
+    "room_id": "room-01",
     "start_at": "2026-11-09T18:19:00+08:00",
     "decision_at": "2026-11-09T18:33:00+08:00",
+    "detected_at": "2026-11-09T18:33:00+08:00",
     "end_at": "2026-11-09T18:56:00+08:00",
     "features": {
       "delta_temperature_c": -1.16,
@@ -1016,17 +1156,22 @@
       "2026-11-09T18:33:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00023",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261109T2153",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261109T2153",
+    "room_id": "room-01",
     "start_at": "2026-11-09T21:53:00+08:00",
     "decision_at": "2026-11-09T22:07:00+08:00",
+    "detected_at": "2026-11-09T22:07:00+08:00",
     "end_at": "2026-11-09T22:14:00+08:00",
     "features": {
       "delta_temperature_c": -0.54,
@@ -1051,17 +1196,21 @@
       "2026-11-09T22:07:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261110T1131",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261110T1131",
+    "room_id": "room-01",
     "start_at": "2026-11-10T11:31:00+08:00",
     "decision_at": "2026-11-10T11:45:00+08:00",
+    "detected_at": "2026-11-10T11:45:00+08:00",
     "end_at": "2026-11-10T12:05:00+08:00",
     "features": {
       "delta_temperature_c": -1.2,
@@ -1086,17 +1235,21 @@
       "2026-11-10T11:45:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "unknown",
     "label_source": "none",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261110T1243",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261110T1243",
+    "room_id": "room-01",
     "start_at": "2026-11-10T12:43:00+08:00",
     "decision_at": "2026-11-10T12:57:00+08:00",
+    "detected_at": "2026-11-10T12:57:00+08:00",
     "end_at": "2026-11-10T13:04:00+08:00",
     "features": {
       "delta_temperature_c": 0.91,
@@ -1121,17 +1274,22 @@
       "2026-11-10T12:57:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00024",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261110T1704",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261110T1704",
+    "room_id": "room-01",
     "start_at": "2026-11-10T17:04:00+08:00",
     "decision_at": "2026-11-10T17:18:00+08:00",
+    "detected_at": "2026-11-10T17:18:00+08:00",
     "end_at": "2026-11-10T17:29:00+08:00",
     "features": {
       "delta_temperature_c": 0.7,
@@ -1156,17 +1314,21 @@
       "2026-11-10T17:18:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261110T2033",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261110T2033",
+    "room_id": "room-01",
     "start_at": "2026-11-10T20:33:00+08:00",
     "decision_at": "2026-11-10T20:47:00+08:00",
+    "detected_at": "2026-11-10T20:47:00+08:00",
     "end_at": "2026-11-10T21:57:00+08:00",
     "features": {
       "delta_temperature_c": 0.13,
@@ -1193,17 +1355,21 @@
       "2026-11-10T21:51:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "unknown",
     "label_source": "none",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261111T1147",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261111T1147",
+    "room_id": "room-01",
     "start_at": "2026-11-11T11:47:00+08:00",
     "decision_at": "2026-11-11T12:01:00+08:00",
+    "detected_at": "2026-11-11T12:01:00+08:00",
     "end_at": "2026-11-11T12:05:00+08:00",
     "features": {
       "delta_temperature_c": 0.84,
@@ -1228,17 +1394,22 @@
       "2026-11-11T12:01:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00025",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261111T1922",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261111T1922",
+    "room_id": "room-01",
     "start_at": "2026-11-11T19:22:00+08:00",
     "decision_at": "2026-11-11T19:36:00+08:00",
+    "detected_at": "2026-11-11T19:36:00+08:00",
     "end_at": "2026-11-11T19:52:00+08:00",
     "features": {
       "delta_temperature_c": -1.14,
@@ -1263,17 +1434,22 @@
       "2026-11-11T19:36:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00026",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261112T0720",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261112T0720",
+    "room_id": "room-01",
     "start_at": "2026-11-12T07:20:00+08:00",
     "decision_at": "2026-11-12T07:34:00+08:00",
+    "detected_at": "2026-11-12T07:34:00+08:00",
     "end_at": "2026-11-12T07:45:00+08:00",
     "features": {
       "delta_temperature_c": 0.87,
@@ -1298,17 +1474,22 @@
       "2026-11-12T07:34:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00027",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261112T0854",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261112T0854",
+    "room_id": "room-01",
     "start_at": "2026-11-12T08:54:00+08:00",
     "decision_at": "2026-11-12T09:08:00+08:00",
+    "detected_at": "2026-11-12T09:08:00+08:00",
     "end_at": "2026-11-12T09:30:00+08:00",
     "features": {
       "delta_temperature_c": -1.21,
@@ -1333,17 +1514,23 @@
       "2026-11-12T09:08:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00028",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261112T1039",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261112T1039",
+    "room_id": "room-01",
     "start_at": "2026-11-12T10:39:00+08:00",
     "decision_at": "2026-11-12T10:53:00+08:00",
+    "detected_at": "2026-11-12T10:53:00+08:00",
     "end_at": "2026-11-12T11:18:00+08:00",
     "features": {
       "delta_temperature_c": 0.41,
@@ -1368,17 +1555,23 @@
       "2026-11-12T10:53:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "unknown",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "uncertain",
+    "feedback_id": "fb-00029",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261112T1258",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261112T1258",
+    "room_id": "room-01",
     "start_at": "2026-11-12T12:58:00+08:00",
     "decision_at": "2026-11-12T13:12:00+08:00",
+    "detected_at": "2026-11-12T13:12:00+08:00",
     "end_at": "2026-11-12T13:42:00+08:00",
     "features": {
       "delta_temperature_c": -0.86,
@@ -1403,17 +1596,21 @@
       "2026-11-12T13:12:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261112T2203",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261112T2203",
+    "room_id": "room-01",
     "start_at": "2026-11-12T22:03:00+08:00",
     "decision_at": "2026-11-12T22:17:00+08:00",
+    "detected_at": "2026-11-12T22:17:00+08:00",
     "end_at": "2026-11-12T22:29:00+08:00",
     "features": {
       "delta_temperature_c": 0.68,
@@ -1438,17 +1635,22 @@
       "2026-11-12T22:17:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00030",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261113T0908",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261113T0908",
+    "room_id": "room-01",
     "start_at": "2026-11-13T09:08:00+08:00",
     "decision_at": "2026-11-13T09:22:00+08:00",
+    "detected_at": "2026-11-13T09:22:00+08:00",
     "end_at": "2026-11-13T10:17:00+08:00",
     "features": {
       "delta_temperature_c": 0.78,
@@ -1474,17 +1676,22 @@
       "2026-11-13T10:00:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00031",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261113T1342",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261113T1342",
+    "room_id": "room-01",
     "start_at": "2026-11-13T13:42:00+08:00",
     "decision_at": "2026-11-13T13:56:00+08:00",
+    "detected_at": "2026-11-13T13:56:00+08:00",
     "end_at": "2026-11-13T14:05:00+08:00",
     "features": {
       "delta_temperature_c": 0.74,
@@ -1509,17 +1716,22 @@
       "2026-11-13T13:56:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00032",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261113T1618",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261113T1618",
+    "room_id": "room-01",
     "start_at": "2026-11-13T16:18:00+08:00",
     "decision_at": "2026-11-13T16:32:00+08:00",
+    "detected_at": "2026-11-13T16:32:00+08:00",
     "end_at": "2026-11-13T17:01:00+08:00",
     "features": {
       "delta_temperature_c": 0.12,
@@ -1544,17 +1756,22 @@
       "2026-11-13T16:32:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00033",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261113T2149",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261113T2149",
+    "room_id": "room-01",
     "start_at": "2026-11-13T21:49:00+08:00",
     "decision_at": "2026-11-13T22:03:00+08:00",
+    "detected_at": "2026-11-13T22:03:00+08:00",
     "end_at": "2026-11-13T22:29:00+08:00",
     "features": {
       "delta_temperature_c": 0.22,
@@ -1579,17 +1796,23 @@
       "2026-11-13T22:03:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00034",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261114T0917",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261114T0917",
+    "room_id": "room-01",
     "start_at": "2026-11-14T09:17:00+08:00",
     "decision_at": "2026-11-14T09:31:00+08:00",
+    "detected_at": "2026-11-14T09:31:00+08:00",
     "end_at": "2026-11-14T09:49:00+08:00",
     "features": {
       "delta_temperature_c": 0.24,
@@ -1614,17 +1837,22 @@
       "2026-11-14T09:31:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00035",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261114T1304",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261114T1304",
+    "room_id": "room-01",
     "start_at": "2026-11-14T13:04:00+08:00",
     "decision_at": "2026-11-14T13:18:00+08:00",
+    "detected_at": "2026-11-14T13:18:00+08:00",
     "end_at": "2026-11-14T13:50:00+08:00",
     "features": {
       "delta_temperature_c": 0.15,
@@ -1650,17 +1878,23 @@
       "2026-11-14T13:37:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "dehumidifier",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00036",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261114T1900",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261114T1900",
+    "room_id": "room-01",
     "start_at": "2026-11-14T19:00:00+08:00",
     "decision_at": "2026-11-14T19:14:00+08:00",
+    "detected_at": "2026-11-14T19:14:00+08:00",
     "end_at": "2026-11-14T19:20:00+08:00",
     "features": {
       "delta_temperature_c": -0.78,
@@ -1685,17 +1919,21 @@
       "2026-11-14T19:14:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "window",
     "label_source": "op_log",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261114T2140",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261114T2140",
+    "room_id": "room-01",
     "start_at": "2026-11-14T21:40:00+08:00",
     "decision_at": "2026-11-14T21:54:00+08:00",
+    "detected_at": "2026-11-14T21:54:00+08:00",
     "end_at": "2026-11-14T22:06:00+08:00",
     "features": {
       "delta_temperature_c": 0.7,
@@ -1720,17 +1958,23 @@
       "2026-11-14T21:54:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "none_confirmed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00037",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261115T0927",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261115T0927",
+    "room_id": "room-01",
     "start_at": "2026-11-15T09:27:00+08:00",
     "decision_at": "2026-11-15T09:41:00+08:00",
+    "detected_at": "2026-11-15T09:41:00+08:00",
     "end_at": "2026-11-15T10:11:00+08:00",
     "features": {
       "delta_temperature_c": -1.73,
@@ -1755,17 +1999,22 @@
       "2026-11-15T09:41:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "mixed",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00038",
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261115T1053",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261115T1053",
+    "room_id": "room-01",
     "start_at": "2026-11-15T10:53:00+08:00",
     "decision_at": "2026-11-15T11:07:00+08:00",
+    "detected_at": "2026-11-15T11:07:00+08:00",
     "end_at": "2026-11-15T11:50:00+08:00",
     "features": {
       "delta_temperature_c": -0.95,
@@ -1791,17 +2040,23 @@
       "2026-11-15T11:40:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "ac",
     "label_source": "feedback",
-    "label_version": "labels/1.0.0"
+    "label_status": "confirmed",
+    "feedback_id": "fb-00039",
+    "feedback_late": true,
+    "label_version": "labels/1.1.0"
   },
   {
     "type": "event",
-    "event_id": "ev-room1-20261115T2106",
-    "room_id": "room1",
+    "event_id": "ev-room-01-20261115T2106",
+    "room_id": "room-01",
     "start_at": "2026-11-15T21:06:00+08:00",
     "decision_at": "2026-11-15T21:20:00+08:00",
+    "detected_at": "2026-11-15T21:20:00+08:00",
     "end_at": "2026-11-15T21:34:00+08:00",
     "features": {
       "delta_temperature_c": -1.09,
@@ -1826,9 +2081,12 @@
       "2026-11-15T21:20:00+08:00"
     ],
     "quality_flag": "ok",
-    "event_version": "events/1.0.0+cfg-2026w2-default",
+    "event_version": 1,
+    "detector_version": "events/1.0.0",
+    "config_version": "cfg-2026w2-default",
     "label": "unknown",
     "label_source": "none",
-    "label_version": "labels/1.0.0"
+    "label_status": null,
+    "label_version": "labels/1.1.0"
   }
 ]

@@ -2,19 +2,36 @@
 
 成功與失敗範例都在 [`examples/`](./examples/)，由 `python -m docs.interfaces.make_examples` 從程式實際輸出產生。改欄位時請同步更新本文件，並重新產生範例。
 
-## 0. 共用慣例（第 1 週，待 A、C 確認）
+## 0. 共用慣例
 
-定義在 `src/common/schema.py`。
+量測、操作日誌、事件與回覆的欄位以 **《室內感測與回饋資料格式 v1》**（主責 高群軒）為準。
+B 內部的慣例定義在 `src/common/schema.py`，與 A 的差異集中在 `src/common/adapters.py`。
 
 | 項目 | 約定 |
 | --- | --- |
-| 時間 | ISO 8601，含時區，統一 `+08:00`（Asia/Taipei）。沒有時區的字串視為 +08:00。 |
-| 室內房間 | `room_id`，例如 `room1` |
+| 時間（A 儲存） | UTC，`YYYY-MM-DDTHH:mm:ss.SSSZ` |
+| 時間（B 內部與輸出） | ISO 8601，`+08:00`（Asia/Taipei），秒精度。`parse_time()` 兩種都收；要產生 A 格式用 `fmt_utc_ms()` |
+| 室內房間 | `room_id`，例如 `room-01` |
 | 外出地點 | 縣市＋行政區，例如 `臺中市`／`南區`；「台」會自動轉成「臺」 |
-| 單位 | 溫度 °C（欄位 `_c`）、相對濕度 %（欄位 `_pct`）、降雨機率 %（`pop_pct`） |
+| 單位 | 溫度 °C（欄位 `_c`）、相對濕度 %（欄位 `_pct`，差值為百分點）、降雨機率 %（`pop_pct`） |
 | 缺值 | `null`，不填 0、-1 或推測值 |
-| 狀態 `status` | `ok`、`missing`（來源沒有）、`stale`（過期）、`unknown`（無法判定）、`error`（取得失敗） |
-| 操作標記 | `ac`、`dehumidifier`、`window`、`mixed`、`none_confirmed`、`unknown` |
+| 品質旗標 `quality_flag` | `ok`、`missing`、`invalid_range`（A §1）。不在值域的旗標一樣排除，並以原名計數 |
+| 回覆狀態 `status` | `pending`、`confirmed`、`uncertain`、`expired`（A §4） |
+| 工具結果狀態 `status` | `ok`、`missing`、`stale`、`unknown`、`error`（B 的預報與建議工具自用，與回覆狀態不同欄位） |
+
+### 操作標記對照
+
+A 的線上值與 B 內部值不同名，轉換在 `adapters.py`，兩邊都不要手動改字串：
+
+| 情況 | A v1 | B 內部 | 分類 |
+| --- | --- | --- | --- |
+| 冷氣／除濕機／開窗 | `ac`／`dehumidifier`／`window` | 同左 | 有操作（1） |
+| 同時多種 | `mixed` | `mixed` | 有操作（1） |
+| 明確無操作 | `none` | `none_confirmed` | 無操作（0） |
+| 有回覆但不屬上列 | `other` | `other` | 排除，單獨計數 |
+| 未回覆／不確定／無紀錄 | 欄位為 `null` | `unknown` | 排除 |
+
+未在表內的字串會拋 `ValueError`：兩邊都是封閉集合，拼錯要當場暴露，靜默轉成 `unknown` 會讓分類指標失真。
 
 ## 1. 預報工具 `get_forecast`（給 C）
 
@@ -59,7 +76,13 @@ r = detect_events(rows, "room1")   # → {events: [...], quality: {...}, config:
 | `features` | 只用 `decision_at` 以前的資料，分類用 |
 | `summary` | 事件結束後的總變化，只供顯示，不進入分類 |
 | `n_runs` | 合併了幾次候選偵測 |
-| `event_version` | 偵測器版本＋門檻設定版本 |
+| `detected_at` | 同 `decision_at`，A §3 的欄位名 |
+| `quality_flag` | `ok`，或起點緊接在量測缺口之後時為 `gap`（A §3） |
+| `event_version` | 整數，初次保存 1；同一事件更新時由呼叫端遞增（A §3） |
+| `detector_version`／`config_version` | B 的偵測器與門檻版本，不佔用 `event_version` |
+
+寫回 A 時用 `src.common.adapters.event_to_a(event, event_version)`：時間轉成 A 的 UTC 格式，
+事件仍持續時 `end_at` 回 `null`，`features` 附 `_version`（範例：`event_record_to_A.json`）。
 
 單點或兩點跳動、斷線恢復後的落差都不會產生事件（`event_none_spike.json`）。
 
@@ -93,9 +116,21 @@ c = recommend("device" | "outing" | "laundry", indoor=..., forecast=..., device_
 
 ## 6. 回饋與操作日誌（A 儲存，B 讀取）
 
-見 `feedback_examples.json`、`op_log_examples.json`。標記規則在 `src/analytics/labels.py`：
+欄位依 A 規格 §2、§4；見 `feedback_examples.json`、`op_log_examples.json`。
+標記規則在 `src/analytics/labels.py`：
 
-- 同一 `event_id` 有多筆回覆時，以 `replied_at` 最晚的那筆為準（更正）
-- `certainty = unsure` 或沒有 `replied_at` → `unknown`
-- 沒有回覆時才查操作日誌，時間窗為 `[start_at − 15 分, decision_at + 5 分]`；有兩種以上設備 → `mixed`
-- 找不到任何紀錄 → `unknown`，**不當作無操作**
+**回覆取用順序**
+
+1. 同一 `feedback_id` 的多個版本取 `feedback_version` 最大者（更正留最新版）。
+2. 同一 `event_id` 可有多次詢問：優先取 `status = confirmed`，再以 `replied_at` 最晚為準。
+3. 只有 `confirmed` 能提供操作標記；`pending`、`uncertain`、`expired` 一律 `unknown`。
+4. `replied_at > expires_at` 的晚到回覆照樣採用，另標 `feedback_late`。
+
+**操作日誌**
+
+- 只有事件沒有回覆時才查日誌。
+- 房間不同的紀錄不採用。
+- 設備操作（`action` 有值）：`operation_at` 落在 `[start_at − 15 分, decision_at + 5 分]`。
+- 無操作（A 的 `none`）：須有 `observation_end_at`，且觀察時段**涵蓋** `[start_at, decision_at]`。
+  只有部分重疊時無法確認整段都沒有操作，因此不採用。
+- 有兩種以上設備 → `mixed`；找不到任何紀錄 → `unknown`，**不當作無操作**。

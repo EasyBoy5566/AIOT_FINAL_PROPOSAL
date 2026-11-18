@@ -1,7 +1,7 @@
 {
   "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
   "type": "indoor",
-  "room_id": "room1",
+  "room_id": "room-01",
   "status": "ok",
   "latest": {
     "temperature_c": 29.0,

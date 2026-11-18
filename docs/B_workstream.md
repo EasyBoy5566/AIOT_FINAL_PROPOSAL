@@ -4,7 +4,7 @@
 
 ```bash
 python -m pip install -r requirements.txt     # 只有評估的決策樹需要 scikit-learn；其他用標準函式庫
-python -m pytest -q                           # 28 項測試
+python -m pytest -q                           # 51 項測試（含 23 項 A v1 互通測試）
 export CWA_API_KEY=CWA-xxxxxxxx               # 到 opendata.cwa.gov.tw 會員中心取得授權碼
 ```
 
@@ -13,6 +13,7 @@ export CWA_API_KEY=CWA-xxxxxxxx               # 到 opendata.cwa.gov.tw 會員�
 | 檔案 | 內容 | 週次 |
 | --- | --- | --- |
 | `src/common/schema.py` | 共用時間、單位、狀態、操作標記 | W1 |
+| `src/common/adapters.py` | A 規格 v1 ↔ B 內部的欄位與標記轉換 | W1 |
 | `src/acquisition/cwa_forecast.py` | 氣象署鄉鎮預報工具、快照保存與回放 | W1 |
 | `src/analytics/quality.py` | 量測品質檢查、有效視窗、室內現況摘要 | W2 |
 | `src/analytics/events.py` | 持續變化判定、事件合併 | W2 |
@@ -39,7 +40,11 @@ export CWA_API_KEY=CWA-xxxxxxxx               # 到 opendata.cwa.gov.tw 會員�
   ```
   第一次跑時請核對回傳的縣市是否正確（程式會自動檢查，對不上會回 `error`）。把產生的快照複製一份到 `docs/interfaces/examples/forecast_real_snapshot.json`。
 - ✅ 缺資料／API 失敗／快照過期的回傳方式（見 `docs/interfaces/B_interfaces.md` §1）
-- 🔲 和 A、C 確認 `schema.py` 的共用欄位
+- ✅ 對齊 A 的《室內感測與回饋資料格式 v1》：時間（UTC ↔ +08:00）、`quality_flag`、
+  操作標記（A 的 `none` ↔ B 的 `none_confirmed`）、回覆 `status`、事件 `detected_at` 與
+  整數 `event_version`。轉換在 `src/common/adapters.py`，對照表見 `docs/interfaces/B_interfaces.md` §0
+- 🔲 和 C 確認詢問狀態與回覆欄位（A 規格 §4 由 C 產生）；`other` 的語意待定，
+  目前排除在分類外並單獨計數
 
 ### 第 2 週
 

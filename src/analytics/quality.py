@@ -13,7 +13,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Iterable
 
-from src.common.schema import QualityFlag, fmt_time, parse_time
+from src.common.adapters import measurement_from_a
+from src.common.schema import QualityFlag, fmt_time, fmt_utc_ms, normalize_quality_flag, parse_time
 
 TEMP_RANGE = (-10.0, 60.0)
 RH_RANGE = (0.0, 100.0)
@@ -40,14 +41,15 @@ class QualityReport:
 
 
 def _invalid_reason(m: dict) -> str | None:
-    flag = m.get("quality_flag", QualityFlag.OK.value)
-    if flag not in (None, QualityFlag.OK.value):
-        return str(flag)
+    """回傳排除原因，通過檢查回 None。原因名與 A 的 quality_flag 同一組值。"""
+    flag = normalize_quality_flag(m.get("quality_flag"))
+    if flag != QualityFlag.OK.value:
+        return flag
     t, rh = m.get("temperature_c"), m.get("relative_humidity_pct")
     if t is None or rh is None:
-        return QualityFlag.MISSING_VALUE.value
+        return QualityFlag.MISSING.value
     if not (TEMP_RANGE[0] <= float(t) <= TEMP_RANGE[1]) or not (RH_RANGE[0] <= float(rh) <= RH_RANGE[1]):
-        return QualityFlag.OUT_OF_RANGE.value
+        return QualityFlag.INVALID_RANGE.value
     return None
 
 
@@ -64,10 +66,11 @@ def valid_segments(measurements: Iterable[dict], max_gap: timedelta = timedelta(
             rep.invalid[reason] = rep.invalid.get(reason, 0) + 1
             continue
         t = parse_time(m["measured_at"])
-        if t in seen:
+        key = m.get("measurement_id") or t      # A §1：measurement_id 為唯一鍵，重送只留一筆
+        if key in seen:
             rep.duplicates += 1
             continue
-        seen.add(t)
+        seen.add(key)
         pts.append(Point(t, float(m["temperature_c"]), float(m["relative_humidity_pct"])))
     pts.sort(key=lambda p: p.t)
     rep.valid = len(pts)
@@ -86,13 +89,19 @@ def valid_segments(measurements: Iterable[dict], max_gap: timedelta = timedelta(
 
 def load_measurements_sqlite(conn: sqlite3.Connection, room_id: str, start: str | datetime,
                              end: str | datetime) -> list[dict]:
-    """依 DESIGN.md 4.2 草案的 measurements 表讀取；A 的實際介面確定後改用其查詢函式。"""
+    """暫用：直接讀 A 的 measurements 表；A 的查詢函式確定後改為呼叫它。
+
+    時段為半開區間 [start, end)，與 A 規格 §1 的歷史查詢一致。
+    邊界用 fmt_utc_ms() 產生 A 的儲存格式（UTC、毫秒、Z 結尾）；
+    用 Asia/Taipei 字串比較會因格式不同而過濾錯誤。
+    """
     cur = conn.execute(
-        "SELECT room_id, measured_at, temperature_c, relative_humidity_pct, quality_flag "
+        "SELECT measurement_id, room_id, device_id, measured_at, received_at, "
+        "temperature_c, relative_humidity_pct, quality_flag "
         "FROM measurements WHERE room_id = ? AND measured_at >= ? AND measured_at < ? ORDER BY measured_at",
-        (room_id, fmt_time(parse_time(start)), fmt_time(parse_time(end))))
+        (room_id, fmt_utc_ms(start), fmt_utc_ms(end)))
     cols = [c[0] for c in cur.description]
-    return [dict(zip(cols, r)) for r in cur.fetchall()]
+    return [measurement_from_a(dict(zip(cols, r))) for r in cur.fetchall()]
 
 
 def indoor_summary(measurements: list[dict], now: datetime, freshness: timedelta = timedelta(minutes=10),

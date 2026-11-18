@@ -1,23 +1,36 @@
 {
   "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "_note": "欄位依 A 規格 §2；無操作須有 observation_end_at 且涵蓋事件",
   "rows": [
     {
-      "operation_at": "2026-11-19T10:28:00+08:00",
+      "operation_id": "op-001",
+      "room_id": "room-01",
+      "operation_at": "2026-11-19T02:28:00.000Z",
+      "observation_end_at": null,
       "operation_label": "ac",
-      "certainty": "sure",
-      "note": "開冷氣 26 度"
+      "action": "on",
+      "recorded_at": "2026-11-19T02:28:30.000Z",
+      "_note": "設備操作：單一時間點"
     },
     {
-      "operation_at": "2026-11-19T13:00:00+08:00",
-      "operation_label": "none_confirmed",
-      "certainty": "sure",
-      "note": "13:00-15:00 確認無操作"
+      "operation_id": "op-002",
+      "room_id": "room-01",
+      "operation_at": "2026-11-19T05:00:00.000Z",
+      "observation_end_at": "2026-11-19T07:00:00.000Z",
+      "operation_label": "none",
+      "action": null,
+      "recorded_at": "2026-11-19T07:01:00.000Z",
+      "_note": "無操作觀察時段 13:00–15:00；只有涵蓋整個事件才算 none_confirmed"
     },
     {
-      "operation_at": "2026-11-19T18:10:00+08:00",
+      "operation_id": "op-003",
+      "room_id": "room-02",
+      "operation_at": "2026-11-19T10:10:00.000Z",
+      "observation_end_at": null,
       "operation_label": "window",
-      "certainty": "unsure",
-      "note": "不確定幾點開窗 → 不採用"
+      "action": "open",
+      "recorded_at": "2026-11-19T10:11:00.000Z",
+      "_note": "其他房間 → 不採用"
     }
   ]
 }

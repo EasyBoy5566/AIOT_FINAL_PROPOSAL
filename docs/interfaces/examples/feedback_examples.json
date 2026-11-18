@@ -1,31 +1,58 @@
 {
   "_example": "由 docs/interfaces/make_examples.py 產生；預報數值來自格式範例假資料",
+  "_note": "欄位依 A 規格 §4；B 取用順序見 src/analytics/labels.py",
   "rows": [
     {
-      "event_id": "ev-room1-20261119T1025",
-      "asked_at": "2026-11-19T10:39:00+08:00",
-      "replied_at": "2026-11-19T10:50:00+08:00",
-      "operation_at": "2026-11-19T10:28:00+08:00",
+      "feedback_id": "fb-001",
+      "event_id": "ev-room-01-20261119T1025",
+      "asked_at": "2026-11-19T02:39:00.000Z",
+      "expires_at": "2026-11-19T02:45:00.000Z",
+      "replied_at": "2026-11-19T02:50:00.000Z",
+      "operation_at": "2026-11-19T02:28:00.000Z",
       "operation_label": "ac",
-      "certainty": "sure"
+      "status": "confirmed",
+      "feedback_version": 1,
+      "updated_at": "2026-11-19T02:50:00.000Z",
+      "_note": "晚到回覆：replied_at > expires_at"
     },
     {
-      "event_id": "ev-room1-20261119T1025",
-      "asked_at": "2026-11-19T10:39:00+08:00",
-      "replied_at": "2026-11-19T11:05:00+08:00",
-      "operation_at": "2026-11-19T10:28:00+08:00",
+      "feedback_id": "fb-001",
+      "event_id": "ev-room-01-20261119T1025",
+      "asked_at": "2026-11-19T02:39:00.000Z",
+      "expires_at": "2026-11-19T02:45:00.000Z",
+      "replied_at": "2026-11-19T03:05:00.000Z",
+      "operation_at": "2026-11-19T02:28:00.000Z",
       "operation_label": "mixed",
-      "certainty": "sure",
-      "_note": "更正：以 replied_at 最晚者為準"
+      "status": "confirmed",
+      "feedback_version": 2,
+      "updated_at": "2026-11-19T03:05:00.000Z",
+      "_note": "更正：同一 feedback_id 取 feedback_version 最大者 → mixed"
     },
     {
-      "event_id": "ev-room1-20261119T1400",
-      "asked_at": "2026-11-19T14:15:00+08:00",
+      "feedback_id": "fb-002",
+      "event_id": "ev-room-01-20261119T1025",
+      "asked_at": "2026-11-19T02:39:00.000Z",
+      "expires_at": "2026-11-19T02:45:00.000Z",
+      "replied_at": "2026-11-19T02:40:00.000Z",
+      "operation_at": null,
+      "operation_label": null,
+      "status": "uncertain",
+      "feedback_version": 1,
+      "updated_at": "2026-11-19T02:40:00.000Z",
+      "_note": "有回覆但不確定 → unknown，不會蓋掉同事件的 confirmed"
+    },
+    {
+      "feedback_id": "fb-003",
+      "event_id": "ev-room-01-20261119T1400",
+      "asked_at": "2026-11-19T06:15:00.000Z",
+      "expires_at": "2026-11-19T06:30:00.000Z",
       "replied_at": null,
       "operation_at": null,
       "operation_label": null,
-      "certainty": null,
-      "_note": "未回覆 → unknown"
+      "status": "expired",
+      "feedback_version": 1,
+      "updated_at": "2026-11-19T06:30:00.000Z",
+      "_note": "逾時未回覆 → unknown，不當作無操作"
     }
   ]
 }

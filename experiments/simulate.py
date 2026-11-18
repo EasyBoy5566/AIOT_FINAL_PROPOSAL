@@ -12,7 +12,7 @@ import random
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from src.common.schema import TZ_TAIPEI, fmt_time
+from src.common.schema import TZ_TAIPEI, fmt_utc_ms
 
 # 操作對溫濕度的大致影響（每分鐘、持續分鐘數）——粗略假設，僅為測試形狀
 EFFECTS = {
@@ -51,14 +51,21 @@ def simulate(days: int = 14, seed: int = 7, start: datetime | None = None, room_
                 eff = EFFECTS[k]
                 dur = rnd.randint(*eff["mins"])
                 active.append((i + dur, eff["dT"], eff["dH"]))
-            truth.append({"operation_at": fmt_time(t), "kind": kind})
+            truth.append({"operation_at": fmt_utc_ms(t), "kind": kind})
             if kind != "natural" and rnd.random() < 0.9:
                 for k in kinds:
-                    ops_log.append({"operation_at": fmt_time(t + timedelta(minutes=rnd.randint(0, 3))),
-                                    "operation_label": k, "certainty": "sure", "note": "synthetic"})
+                    at = t + timedelta(minutes=rnd.randint(0, 3))
+                    ops_log.append({"operation_id": "op-%05d" % len(ops_log), "room_id": room_id,
+                                    "operation_at": fmt_utc_ms(at), "observation_end_at": None,
+                                    "operation_label": k, "action": "on",
+                                    "recorded_at": fmt_utc_ms(at + timedelta(seconds=30))})
             elif kind == "natural" and rnd.random() < 0.6:
-                ops_log.append({"operation_at": fmt_time(t), "operation_label": "none_confirmed",
-                                "certainty": "sure", "note": "synthetic"})
+                # A §2：無操作是一個觀察時段，須涵蓋事件的判斷區間
+                ops_log.append({"operation_id": "op-%05d" % len(ops_log), "room_id": room_id,
+                                "operation_at": fmt_utc_ms(t - timedelta(minutes=30)),
+                                "observation_end_at": fmt_utc_ms(t + timedelta(minutes=90)),
+                                "operation_label": "none", "action": None,
+                                "recorded_at": fmt_utc_ms(t)})
             pi += 1
             # 偶爾斷線
             if rnd.random() < 0.05:
@@ -78,7 +85,10 @@ def simulate(days: int = 14, seed: int = 7, start: datetime | None = None, room_
         if rnd.random() < 0.002:  # 單點跳動
             noise_t += rnd.choice([-3, 3])
             noise_h += rnd.choice([-10, 10])
-        meas.append({"room_id": room_id, "measured_at": fmt_time(t), "temperature_c": round(T + noise_t, 2),
+        meas.append({"measurement_id": "sensor-01:boot-sim:%d" % i, "room_id": room_id,
+                     "device_id": "sensor-01", "measured_at": fmt_utc_ms(t),
+                     "received_at": fmt_utc_ms(t + timedelta(seconds=1)),
+                     "temperature_c": round(T + noise_t, 2),
                      "relative_humidity_pct": round(H + noise_h, 1), "quality_flag": "ok"})
     return {"data_origin": "synthetic", "seed": seed, "room_id": room_id, "measurements": meas,
             "op_log": ops_log, "truth": truth, "reply_prob": reply_prob}
@@ -99,11 +109,16 @@ def synth_feedback(events: list[dict], truth: list[dict], reply_prob: float, see
         elif kinds - {"natural"}:
             lab = next(iter(kinds - {"natural"}))
         else:
-            lab = "none_confirmed"
-        fb.append({"event_id": e["event_id"], "asked_at": e["decision_at"],
-                   "replied_at": fmt_time(d + timedelta(minutes=rnd.randint(1, 20))),
-                   "operation_at": None, "operation_label": lab,
-                   "certainty": "sure" if rnd.random() > 0.1 else "unsure"})
+            lab = "none"                      # A §2／§4 的明確無操作
+        replied = d + timedelta(minutes=rnd.randint(1, 20))
+        uncertain = rnd.random() <= 0.1
+        fb.append({"feedback_id": "fb-%05d" % len(fb), "event_id": e["event_id"],
+                   "asked_at": fmt_utc_ms(e["decision_at"]),
+                   "expires_at": fmt_utc_ms(d + timedelta(minutes=15)),
+                   "replied_at": fmt_utc_ms(replied), "operation_at": None,
+                   "operation_label": None if uncertain else lab,
+                   "status": "uncertain" if uncertain else "confirmed",
+                   "feedback_version": 1, "updated_at": fmt_utc_ms(replied)})
     return fb
 
 

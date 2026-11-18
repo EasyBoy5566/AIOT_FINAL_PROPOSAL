@@ -22,7 +22,7 @@ from statistics import median
 from typing import Iterable
 
 from src.analytics.quality import Point, valid_segments
-from src.common.schema import fmt_time
+from src.common.schema import fmt_time, parse_time
 
 DETECTOR_VERSION = "events/1.0.0"
 
@@ -160,8 +160,27 @@ def make_event_id(room_id: str, start: datetime) -> str:
     return f"ev-{room_id}-{start.strftime('%Y%m%dT%H%M')}"
 
 
-def merge_runs(runs: list[Run], cfg: EventConfig = EventConfig()) -> list[dict]:
-    """把間隔 <= merge_gap 的 run 合併成事件。事件特徵取第一個 run（最早可判斷的時間點）。"""
+def _gap_adjacent(start_at: datetime, gaps: list[dict], cfg: EventConfig) -> bool:
+    """事件起點是否緊接在量測缺口之後。
+
+    斜率視窗需要暖機，所以事件不會跨越缺口；但起點落在斷線恢復後
+    slope_window + min_duration 之內的事件，基線只有重連後的少數讀值，
+    依 A 規格 §3 標為 `gap`，由分析端決定排除或重建視窗。
+    """
+    near = timedelta(minutes=cfg.slope_window_min + cfg.min_duration_min)
+    for g in gaps or []:
+        to = parse_time(g.get("to"))
+        if to is not None and to <= start_at and start_at - to <= near:
+            return True
+    return False
+
+
+def merge_runs(runs: list[Run], cfg: EventConfig = EventConfig(),
+               gaps: list[dict] | None = None) -> list[dict]:
+    """把間隔 <= merge_gap 的 run 合併成事件。事件特徵取第一個 run（最早可判斷的時間點）。
+
+    `gaps` 為 quality 報告的缺口清單，用來標記 A 規格 §3 的 quality_flag。
+    """
     gap = timedelta(minutes=cfg.merge_gap_min)
     events: list[dict] = []
     for r in sorted(runs, key=lambda x: (x.room_id, x.start_at)):
@@ -177,14 +196,20 @@ def merge_runs(runs: list[Run], cfg: EventConfig = EventConfig()) -> list[dict]:
             "event_id": make_event_id(r.room_id, r.start_at),
             "room_id": r.room_id,
             "start_at": fmt_time(r.start_at),
+            # decision_at 為 B 內部名稱，detected_at 是 A 規格 §3 的欄位名，值相同。
             "decision_at": fmt_time(r.decision_at),
+            "detected_at": fmt_time(r.decision_at),
             "end_at": fmt_time(r.end_at),
             "features": dict(r.features),
             "summary": dict(r.summary),
             "n_runs": 1,
             "run_decisions": [fmt_time(r.decision_at)],
-            "quality_flag": "ok",
-            "event_version": f"{DETECTOR_VERSION}+{cfg.version}",
+            "quality_flag": "gap" if _gap_adjacent(r.start_at, gaps, cfg) else "ok",
+            # A 規格 §3：event_version 是整數，初次保存 1，同一事件更新時由呼叫端遞增。
+            # B 的偵測器與門檻版本另外帶，不佔用這個欄位。
+            "event_version": 1,
+            "detector_version": DETECTOR_VERSION,
+            "config_version": cfg.version,
             "_end": r.end_at,
         })
     for e in events:
@@ -196,4 +221,5 @@ def detect_events(measurements: Iterable[dict], room_id: str, cfg: EventConfig =
     """給 C／A 的單一入口：回傳事件清單與品質報告。"""
     runs, quality = detect_runs(measurements, room_id, cfg)
     return {"room_id": room_id, "detector_version": DETECTOR_VERSION, "config": cfg.as_dict(),
-            "quality": quality, "runs": len(runs), "events": merge_runs(runs, cfg)}
+            "quality": quality, "runs": len(runs),
+            "events": merge_runs(runs, cfg, quality.get("gaps"))}
