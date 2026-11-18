@@ -30,14 +30,14 @@ from pathlib import Path
 from statistics import mean
 from typing import Any, Callable
 
-from src.common.schema import Status, fmt_time, now_taipei, parse_time
+from src.common.schema import FORECAST_MAX_AGE_HOURS, Status, fmt_time, now_taipei, parse_time
 
 TOOL_VERSION = "cwa_forecast/1.0.0"
 API_BASE = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/"
 SOURCE_NAME = "中央氣象署開放資料平臺｜鄉鎮天氣預報（未來3天逐3小時）"
 
 # 預報每 6 小時更新（05:30、11:30、17:30、23:30 發布），超過即視為過期。
-DEFAULT_MAX_AGE = timedelta(hours=6)
+DEFAULT_MAX_AGE = timedelta(hours=FORECAST_MAX_AGE_HOURS)   # 共用門檻，見 src/common/schema.py
 
 # 各縣市「未來 3 天」鄉鎮預報資料集代碼（一週預報為代碼 +2）。
 # 首次真實呼叫時請核對回傳的 LocationsName，若不符請改此表並更新版本。

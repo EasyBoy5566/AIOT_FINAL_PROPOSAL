@@ -4,7 +4,7 @@
 
 ```bash
 python -m pip install -r requirements.txt     # 只有評估的決策樹需要 scikit-learn；其他用標準函式庫
-python -m pytest -q                           # 51 項測試（含 23 項 A v1 互通測試）
+python -m pytest -q                           # 53 項測試（含 25 項 A v1 互通測試）
 export CWA_API_KEY=CWA-xxxxxxxx               # 到 opendata.cwa.gov.tw 會員中心取得授權碼
 ```
 
@@ -43,8 +43,12 @@ export CWA_API_KEY=CWA-xxxxxxxx               # 到 opendata.cwa.gov.tw 會員�
 - ✅ 對齊 A 的《室內感測與回饋資料格式 v1》：時間（UTC ↔ +08:00）、`quality_flag`、
   操作標記（A 的 `none` ↔ B 的 `none_confirmed`）、回覆 `status`、事件 `detected_at` 與
   整數 `event_version`。轉換在 `src/common/adapters.py`，對照表見 `docs/interfaces/B_interfaces.md` §0
-- 🔲 和 C 確認詢問狀態與回覆欄位（A 規格 §4 由 C 產生）；`other` 的語意待定，
-  目前排除在分類外並單獨計數
+- ✅ 共用門檻訂為 `thresholds/1.0.0`（取樣 1 分、量測過期 10 分、缺口 5 分、預報過期 6 小時），
+  集中在 `src/common/schema.py`，A 的 `is_stale` 與 C 的過期提示請取 `shared_thresholds()`
+- ✅ `other` 先訂為「無法判定、排除於分類外並單獨計數」
+- 🔲 和 C 確認詢問狀態與回覆欄位（A 規格 §4 由 C 產生），以及 `other` 是否只在
+  「有操作但非三種設備」時送出；是的話改為正類並改 `labels` 版本
+- 🔲 首次實測後確認取樣頻率與過期門檻，改值要連帶改 `THRESHOLDS_VERSION`
 
 ### 第 2 週
 

@@ -22,7 +22,7 @@ from statistics import median
 from typing import Iterable
 
 from src.analytics.quality import Point, valid_segments
-from src.common.schema import fmt_time, parse_time
+from src.common.schema import MEASUREMENT_GAP_MIN, fmt_time, parse_time
 
 DETECTOR_VERSION = "events/1.0.0"
 
@@ -30,7 +30,7 @@ DETECTOR_VERSION = "events/1.0.0"
 @dataclass(frozen=True)
 class EventConfig:
     version: str = "cfg-2026w2-default"
-    max_gap_min: float = 5.0            # 超過即切段（斷線）
+    max_gap_min: float = MEASUREMENT_GAP_MIN   # 超過即切段（斷線），共用門檻
     slope_window_min: float = 10.0      # 斜率視窗
     temp_slope_thr: float = 0.05        # °C/min（10 分鐘約 0.5°C）
     rh_slope_thr: float = 0.25          # %RH/min（10 分鐘約 2.5%）

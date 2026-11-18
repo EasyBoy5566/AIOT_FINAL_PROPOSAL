@@ -14,7 +14,8 @@ from datetime import datetime, timedelta
 from typing import Iterable
 
 from src.common.adapters import measurement_from_a
-from src.common.schema import QualityFlag, fmt_time, fmt_utc_ms, normalize_quality_flag, parse_time
+from src.common.schema import (MEASUREMENT_GAP_MIN, MEASUREMENT_MAX_AGE_MIN, QualityFlag,
+                               fmt_time, fmt_utc_ms, normalize_quality_flag, parse_time)
 
 TEMP_RANGE = (-10.0, 60.0)
 RH_RANGE = (0.0, 100.0)
@@ -53,7 +54,8 @@ def _invalid_reason(m: dict) -> str | None:
     return None
 
 
-def valid_segments(measurements: Iterable[dict], max_gap: timedelta = timedelta(minutes=5)
+def valid_segments(measurements: Iterable[dict],
+                   max_gap: timedelta = timedelta(minutes=MEASUREMENT_GAP_MIN)
                    ) -> tuple[list[list[Point]], QualityReport]:
     """回傳依時間缺口切開的有效段，以及品質報告。"""
     rep = QualityReport()
@@ -104,7 +106,8 @@ def load_measurements_sqlite(conn: sqlite3.Connection, room_id: str, start: str 
     return [measurement_from_a(dict(zip(cols, r))) for r in cur.fetchall()]
 
 
-def indoor_summary(measurements: list[dict], now: datetime, freshness: timedelta = timedelta(minutes=10),
+def indoor_summary(measurements: list[dict], now: datetime,
+                   freshness: timedelta = timedelta(minutes=MEASUREMENT_MAX_AGE_MIN),
                    trend_window: timedelta = timedelta(minutes=30)) -> dict:
     """給規則與 C 顯示用的室內現況：最新讀值、新鮮度、近 trend_window 的變化量。"""
     segs, rep = valid_segments(measurements)

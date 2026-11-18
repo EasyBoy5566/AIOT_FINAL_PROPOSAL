@@ -20,6 +20,19 @@ B 內部保留較明確的命名，差異集中在 `src/common/adapters.py`，�
 回覆取用：同一 `feedback_id` 取 `feedback_version` 最大者，同一事件優先取 `status = confirmed`。
 只有 `confirmed` 提供標記，其餘為 unknown 並排除於分類之外。
 
+## 4.1.1 共用門檻（thresholds/1.0.0）
+
+依 A 規格〈共通規格〉，取樣頻率、過期時間與缺口門檻記在 `src/common/schema.py`，三方共用：
+
+| 門檻 | 值 | 依據 |
+| --- | --- | --- |
+| 取樣頻率 | 每分鐘 1 筆 | 第一版，TODO：首次實測後確認 |
+| 室內量測過期 | 10 分鐘 | 取樣頻率的 10 倍 |
+| 時間缺口 | 5 分鐘 | 超過即切段 |
+| 預報過期 | 6 小時 | 氣象署發布週期 |
+
+評估報告的 manifest 記錄實際使用的門檻版本與數值。
+
 ## 4.2 補充：預報快照實際欄位
 
 `forecast_snapshots(snapshot_id, location_id, retrieved_at, issued_at, valid_from, valid_to, forecast_payload, source, dataset_id, tool_version)`
@@ -53,6 +66,7 @@ TODO：用訓練期實測資料確認門檻，記錄調整前後的事件數。
 - 切分：依事件開始時間，較晚 30% 作測試。
 - 最低樣本：訓練 ≥ 20、測試 ≥ 10，每類訓練 ≥ 5、測試 ≥ 3；不到就不訓練決策樹，維持規則版。
 - 標記：見 `labels.py`（labels/1.1.0）。unknown 與 other 排除在分類之外，並分別報告排除數。
+  `other` 的語意由 A 規格允許但未定義，B 先訂為「無法判定、排除」，待 C 確認後再決定是否改為正類。
 - 無操作日誌（A 的 `none`）須有觀察時段且涵蓋事件的 `[start_at, decision_at]` 才採用。
 
 ## 6. 規則表（rules/1.0.0）

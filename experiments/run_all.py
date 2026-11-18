@@ -20,7 +20,7 @@ from pathlib import Path
 from experiments import evaluate as ev
 from src.analytics.events import EventConfig, detect_runs, merge_runs
 from src.analytics.labels import LABEL_VERSION, label_counts, link_labels
-from src.common.schema import parse_time
+from src.common.schema import parse_time, shared_thresholds
 from src.knowledge.rules import RULESET_VERSION
 
 
@@ -80,6 +80,7 @@ def write_report(out: Path, manifest: dict, label_dist: dict, bin_r: dict, mc_r:
 | 量測期間 | {manifest['period'][0]} ～ {manifest['period'][1]} |
 | 監測時數 | {manifest['monitored_hours']} |
 | 事件偵測 | {manifest['env']['detector_version']}，設定 {manifest['event_config']['version']} |
+| 共用門檻 | {manifest['thresholds']['version']}：量測過期 {manifest['thresholds']['measurement_max_age_min']} 分、缺口 {manifest['thresholds']['measurement_gap_min']} 分、預報過期 {manifest['thresholds']['forecast_max_age_hours']} 小時 |
 | 標記 | {LABEL_VERSION}；規則庫 {RULESET_VERSION}；評估 {ev.EVAL_VERSION}；固定規則 {ev.FIXED_RULE_VERSION} |
 | 環境 | Python {manifest['env']['python']}、scikit-learn {manifest['env']['sklearn']} |
 
@@ -167,7 +168,7 @@ def main(argv: list[str] | None = None) -> int:
                 "measurements_fingerprint": ev.data_fingerprint(meas),
                 "period": [times[0].isoformat() if times else None, times[-1].isoformat() if times else None],
                 "monitored_hours": round(hours, 1), "quality": quality, "n_runs": len(runs),
-                "n_events": len(events), "event_config": cfg.as_dict(), "env": ev.env_info(),
+                "n_events": len(events), "thresholds": shared_thresholds(), "event_config": cfg.as_dict(), "env": ev.env_info(),
                 "inputs": {"measurements": a.measurements, "feedback": a.feedback, "op_log": a.op_log,
                            "synthetic_seed": a.seed if a.synthetic else None}}
     bin_r = ev.compare_classifiers(labeled, "binary", a.test_frac)

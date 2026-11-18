@@ -33,6 +33,13 @@
   },
   "n_runs": 64,
   "n_events": 52,
+  "thresholds": {
+    "version": "thresholds/1.0.0",
+    "sampling_interval_min": 1.0,
+    "measurement_max_age_min": 10.0,
+    "measurement_gap_min": 5.0,
+    "forecast_max_age_hours": 6.0
+  },
   "event_config": {
     "version": "cfg-2026w2-default",
     "max_gap_min": 5.0,
@@ -48,7 +55,7 @@
     "python": "3.12.2",
     "sklearn": "1.8.0",
     "detector_version": "events/1.0.0",
-    "generated_at": "2026-11-18T20:38:48+08:00"
+    "generated_at": "2026-11-18T20:45:48+08:00"
   },
   "inputs": {
     "measurements": null,

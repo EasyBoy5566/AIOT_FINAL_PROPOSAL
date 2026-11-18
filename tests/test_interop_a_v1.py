@@ -219,3 +219,36 @@ def test_gap_adjacent_flag():
     assert _gap_adjacent(start, gaps, cfg) is True          # 10 分鐘 <= 10 + 5
     assert _gap_adjacent(start + timedelta(minutes=30), gaps, cfg) is False
     assert _gap_adjacent(start, [], cfg) is False
+
+
+# --- 7 共用門檻（A〈共通規格〉要求記在設定）--------------------------------
+
+def test_shared_thresholds_are_single_source():
+    """門檻只能定義在 schema.py。各模組若重新寫死，A 的 is_stale 與 B 的判定會打架。"""
+    from datetime import timedelta as td
+
+    from src.acquisition.cwa_forecast import DEFAULT_MAX_AGE
+    from src.analytics.events import EventConfig as EC
+    from src.common.schema import (
+        FORECAST_MAX_AGE_HOURS,
+        MEASUREMENT_GAP_MIN,
+        MEASUREMENT_MAX_AGE_MIN,
+        THRESHOLDS_VERSION,
+        shared_thresholds,
+    )
+
+    assert EC().max_gap_min == MEASUREMENT_GAP_MIN
+    assert DEFAULT_MAX_AGE == td(hours=FORECAST_MAX_AGE_HOURS)
+    assert shared_thresholds()["version"] == THRESHOLDS_VERSION
+    assert shared_thresholds()["measurement_max_age_min"] == MEASUREMENT_MAX_AGE_MIN
+
+
+def test_measurement_freshness_boundary_uses_shared_threshold():
+    """室內現況的 ok／stale 以共用門檻為界，C 的畫面與 A 的 is_stale 要用同一個值。"""
+    from src.analytics.quality import indoor_summary
+    from src.common.schema import MEASUREMENT_MAX_AGE_MIN
+
+    rows = [a_measurement(i) for i in range(20)]
+    last = BASE + timedelta(minutes=19)
+    assert indoor_summary(rows, last + timedelta(minutes=MEASUREMENT_MAX_AGE_MIN))["status"] == "ok"
+    assert indoor_summary(rows, last + timedelta(minutes=MEASUREMENT_MAX_AGE_MIN + 1))["status"] == "stale"

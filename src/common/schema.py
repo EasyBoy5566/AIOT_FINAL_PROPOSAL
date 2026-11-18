@@ -23,6 +23,27 @@ TZ_TAIPEI = timezone(timedelta(hours=8), name="Asia/Taipei")
 SCHEMA_VERSION_A = 1          # 對接的 A 規格版本（measurements payload 的 schema_version）
 FEATURES_VERSION = "features/1.0.0"   # A 的 events.features 欄位字典版本（由 B 提供）
 
+# --- 共用門檻 ---------------------------------------------------------------
+# A 規格〈共通規格〉要求取樣頻率、資料過期時間與時間缺口門檻「由組員確認後記在設定」。
+# 以下為 B 提出的第一版值，三方共用：A 的最新量測查詢回傳 is_stale、C 的畫面顯示
+# 過期提示、B 的趨勢與事件判定都以這裡為準，不各自寫死，避免同一筆資料在
+# Web 上顯示「新鮮」而分析端判定「過期」。
+# 改值要連帶改 THRESHOLDS_VERSION，並在評估報告的 manifest 留下紀錄。
+THRESHOLDS_VERSION = "thresholds/1.0.0"
+SAMPLING_INTERVAL_MIN = 1.0      # 取樣頻率：每分鐘一筆（第一版，待首次實測確認）
+MEASUREMENT_MAX_AGE_MIN = 10.0   # 室內量測過期門檻：取樣頻率的 10 倍，容許短暫丟包
+MEASUREMENT_GAP_MIN = 5.0        # 時間缺口門檻：超過即切段，不跨缺口計算變化
+FORECAST_MAX_AGE_HOURS = 6.0     # 預報過期門檻：氣象署每 6 小時發布一次
+
+
+def shared_thresholds() -> dict:
+    """供評估 manifest 與報告記錄實際使用的門檻值。"""
+    return {"version": THRESHOLDS_VERSION,
+            "sampling_interval_min": SAMPLING_INTERVAL_MIN,
+            "measurement_max_age_min": MEASUREMENT_MAX_AGE_MIN,
+            "measurement_gap_min": MEASUREMENT_GAP_MIN,
+            "forecast_max_age_hours": FORECAST_MAX_AGE_HOURS}
+
 
 class Status(str, Enum):
     """資料或結果的狀態。四種介面（量測、預報、事件、回覆）共用。"""
@@ -118,8 +139,10 @@ def to_a_operation_label(value: str | None) -> str | None:
 def to_binary(label: str | OperationLabel) -> int | None:
     """有操作=1、明確無操作=0、未知或 other=None（排除，不當作負類）。
 
-    other 代表使用者確實回覆但不屬於三種設備操作，無法判定有無操作，
-    因此排除在分類之外，並在報告中單獨計數。
+    other 的處置（B 訂定，待 C 確認）：A 規格允許 confirmed 的回覆帶 `other`，
+    但沒有定義它代表「操作了但不是這三種」還是其他情況。無法判定有無操作，
+    因此不併入任何一類，排除於分類之外並在報告中單獨計數。
+    若 C 之後確定 `other` 只在「有操作但非三種設備」時送出，再改為正類並改版。
     """
     lab = OperationLabel(normalize_operation_label(label))
     if lab in OPERATED_LABELS:
